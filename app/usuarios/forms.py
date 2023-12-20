@@ -21,20 +21,20 @@ class UserForm():
                             )])
     first_name= StringField("Ingrese su nombre",
                             validators=[InputRequired(
-                                message="password"
+                                message="first_name"
                             )])
     last_name= StringField("Ingrese su apellido",
                             validators=[InputRequired(
-                                message="email"
+                                message="last_name"
                         ),
                             ])
     email = StringField("Ingrese su correo",
                             validators=[InputRequired(
-                                message="password"
+                                message="email"
                             )])
     phone = StringField("Ingrese su celular",
                             validators=[InputRequired(
-                                message="email"
+                                message="phone"
                         ),
                                         ])
     

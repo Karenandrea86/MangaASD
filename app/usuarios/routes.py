@@ -4,9 +4,9 @@ import app
 import os
 from .forms import NewUserForm, EditUserForm
 
-@usuarios.route('/create',methods=['GET', 'POST'])
+@usuarios.route('/create', methods=['GET', 'POST'])
 def creat():
-    p = app.models.Usuario()
+    p = app.models.Usuarios()
     form = NewUserForm()
     if form.validate_on_submit():
         form.populate_obj(p)
@@ -19,13 +19,13 @@ def creat():
 
 @usuarios.route('/listar')
 def listar():
-    usuarios =app.models.Usuario.query.all()
+    usuarios = app.models.Usuarios.query.all()
     return render_template("list_usuarios.html",
                             usuarios = usuarios)
 
 @usuarios.route('/update/<usuario_id>', methods=['GET', 'POST'])
 def edit(usuario_id):
-    p = app.models.Usuario.query.get(usuario_id)
+    p = app.models.Usuarios.query.get(usuario_id)
     form = EditUserForm(obj=p)
     if form.validate_on_submit():
         form.populate_obj(p)
@@ -36,7 +36,7 @@ def edit(usuario_id):
 
 @usuarios.route('/delete/<usuario_id>')
 def delete(usuario_id):
-    p=app.models.Usuario.query.get(usuario_id)
+    p=app.models.Usuarios.query.get(usuario_id)
     app.db.session.delete(p)
     app.db.session.commit()
     flash("Usuario eliminado")

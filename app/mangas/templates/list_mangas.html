@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for mensaje in get_flashed_messages() %}
+<div class="alert alert-success">
+    <button type="button"
+        class="close"
+        data-dismiss="alert" >
+        &times;
+    </button>
+    {{ mensaje }}
+</div>
+{% endfor %}
+<h1> Lista de mangas </h1>
+<a href="/mangas/create"
+    class="btn btn-info">
+    Nuevo manga
+</a>
+<table class="table table-hoover">
+    <thead>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Imagen promocional</th>
+        <th>Fecha alquiler</th>
+        <th>Fecha devolución</th>
+        <th>Estado</th>
+        <th>Precio</th>
+        <th>Actualizar</th>
+        <th>Eliminar</th>
+    </thead>
+    <tbody>
+        {% for manga in mangas %}
+        <tr>
+            <td>{{ manga.title }}</td>
+            <td>{{ manga.description }}</td>
+            <td>
+                <img src="images/{{ manga.image_path }}" alt="" width="500" height="400">
+            </td>
+            <td>{{ manga.rental_date }}</td>
+            <td>{{ manga.return_date }}</td>
+            <td>{{ manga.status }}</td>
+            <td>{{ manga.price }}</td>
+            <td>
+                <a href="/mangas/editar/{{manga.id}}">
+                    Actualizar
+                </a>
+            </td>
+            <td>
+                <a href="/mangas/eliminar/{{manga.id}}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
