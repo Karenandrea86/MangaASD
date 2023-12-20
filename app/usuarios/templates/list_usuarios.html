@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for mensaje in get_flashed_messages() %}
+<div class="alert alert-success">
+    <button type="button"
+        class="close"
+        data-dismiss="alert" >
+        &times;
+    </button>
+    {{ mensaje }}
+</div>
+{% endfor %}
+<h1> Lista de usuarios </h1>
+<a href="/usuarios/create"
+    class="btn btn-info">
+    Nuevo usuario
+</a>
+<table class="table table-hoover">
+    <thead>
+        <th>Nombre de usuario</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Correo</th>
+        <th>Celular</th>
+        <th>Actualizar</th>
+        <th>Eliminar</th>
+    </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>
+                    {{usuario.username}}
+                </td>
+                <td>
+                    {{usuario.password}}
+                </td>
+                <td>
+                    {{usuario.email}}
+                </td>
+                <td>
+                    <a href="/usuarios/update/{{usuario.id}}" class="btn btn-primary">
+                        Editar
+                    </a>
+                </td>
+                <td>
+                    <a href="/usuarios/delete/{{usuario.id}}" class="btn btn-danger">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+{% endblock %}

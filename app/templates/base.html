@@ -1,0 +1,18 @@
+{%  extends 'bootstrap/base.html'%}    
+
+{%  block head %}
+    {{  super() }}
+{% endblock %}
+
+{%  block body %}
+     {% include 'navbar.html'%}
+
+     {% block content %}
+         
+     {% endblock %}
+
+     {% block scripts %}
+         {{super()}}
+     {% endblock %}
+
+{% endblock %}
