@@ -21,7 +21,7 @@ class Mangas(db.Model):
     description = db.Column(db.Text)
     image_path = db.Column(db.String(255))
     rental_date = db.Column(db.DateTime, default = datetime.utcnow)
-    return_date = db.Column(db.DateTime, default = datetime.utcnow)
+    return_date = db.Column(db.DateTime)
     status = db.Column(db.String(20))
     price = db.Column(db.Numeric(precision = 10, scale = 2))
     

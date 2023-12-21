@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, IntegerField, StringField, IntegerField, DateTimeField
+from wtforms import SubmitField, IntegerField, StringField, IntegerField, DateField
 from wtforms.validators import InputRequired, NumberRange, DataRequired
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 
@@ -30,6 +30,14 @@ class NewMangaForm(FlaskForm, MangaForm):
                                     )
                                     ]
                        )
+    return_date = DateField(
+                        "Ingrese la fecha de devolución" ,
+                        validators=[
+                            DataRequired(message='Fecha requerida')
+                                    ]
+                        
+                        
+                        )
     status = StringField(
                         "Ingrese el estado del manga" ,
                         validators=[
