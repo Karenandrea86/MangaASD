@@ -21,6 +21,6 @@ app.register_blueprint(usuarios)
 
 from .models import Usuarios, Mangas, Prestamos
 
-@app.route('/prueba')
+@app.route('/')
 def prueba ():
     return render_template("base.html")
