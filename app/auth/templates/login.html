@@ -37,28 +37,31 @@
     <main class="container py-5 d-flex">
         <section class="text-light row row-cols-2 g-2 g-lg-5 ">
             <div class="col-sm-8 p-5">
-                <form class="row g-3 needs-validation">
-                    <div class="col-md-12">
-                      <label for="validationCustomUsername" class="form-label">Nombre de usuario</label>
-                      <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                        <div class="invalid-feedback">
-                          Por favor, elige un nombre de usuario.
-                        </div>
-                      </div>
+              <form class="row g-3 needs-validation" action="" method="POST" novalidate enctype="multipart/form-data">
+                <div class="col-md-12">
+                  <label for="validationCustomUsername" class="form-label">Nombre de usuario</label>
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    <input name="username" type="text" class="form-control" value="{{ request.form.username }}" required>
+                    <div class="invalid-feedback">
+                      Por favor, elige un nombre de usuario.
                     </div>
-                    <div class="col-md-12">
-                      <label for="validationCustom03" class="form-label">Contraseña</label>
-                      <input type="password" class="form-control" id="validationCustom03" required>
-                      <div class="invalid-feedback">
-                        Debes ingresar una contraseña.
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <button class="btn btn-secondary" type="submit">Iniciar Sesion</button>
-                    </div>
-                  </form>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label for="validationCustom03" class="form-label">Email</label>
+                  <input name="email" type="email" class="form-control" value="{{request.form.email }}" required>
+                  <div class="invalid-feedback">
+                    Debes ingresar un correo.
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-secondary" type="submit">Iniciar Sesion</button>
+                </div>
+              </form>
+              {% if error %}
+                <p class="error"><strong>Error:</strong> {{ error }}
+              {% endif %}
             </div>
             <div class="col-sm-4 p-5">
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores quis veniam provident nulla sint aliquid repudiandae. Veniam sit perspiciatis est, voluptate optio consectetur nihil soluta.</p>
