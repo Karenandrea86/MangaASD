@@ -22,4 +22,4 @@ from .models import Usuarios, Mangas, Prestamos
 
 @app.route('/')
 def prueba ():
-    return render_template("base.html")
+    return render_template("index.html")
