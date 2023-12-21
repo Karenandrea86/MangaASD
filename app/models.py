@@ -33,4 +33,4 @@ class Prestamos(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'))
     manga_id = db.Column(db.Integer, db.ForeignKey('mangas.id'))
     loan_date = db.Column(db.DateTime, default = datetime.utcnow)
-    return_date = db.Column(db.DateTime, default = datetime.utcnow)
+    return_date = db.Column(db.DateTime)
