@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for mensaje in get_flashed_messages() %}
+<div class="alert alert-success">
+    <button type="button"
+        class="close"
+        data-dismiss="alert" >
+        &times;
+    </button>
+    {{ mensaje }}
+</div>
+{% endfor %}
+<h1> Lista de préstamos </h1>
+<a href="/prestamos/create"
+    class="btn btn-info">
+    Nuevo préstamo
+</a>
+<table class="table table-hoover">
+    <thead>
+        <th>ID Usuario</th>
+        <th>ID Manga</th>
+        <th>Fecha Préstamo</th>
+        <th>Fecha de Regreso</th>
+        <th>Actualizar</th>
+        <th>Eliminar</th>
+    </thead>
+        <tbody>
+            {% for prestamo in prestamos %}
+            <tr>
+                <td>
+                    {{prestamo.user_id}}
+                </td>
+                <td>
+                    {{prestamo.manga_id}}
+                </td>
+                <td>
+                    {{prestamo.loan_date}}
+                </td>
+                <td>
+                    {{prestamo.return_date}}
+                </td>
+                <td>
+                    <a href="/prestamos/update/{{prestamo.id}}" class="btn btn-primary">
+                        Editar
+                    </a>
+                </td>
+                <td>
+                    <a href="/prestamos/delete/{{prestamo.id}}" class="btn btn-danger">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+{% endblock %}
