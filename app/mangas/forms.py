@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, IntegerField, StringField, IntegerField, DateField
+from wtforms import SubmitField, IntegerField, StringField, IntegerField, DateField, SelectField
 from wtforms.validators import InputRequired, NumberRange, DataRequired
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 
@@ -38,8 +38,12 @@ class NewMangaForm(FlaskForm, MangaForm):
                         
                         
                         )
-    status = StringField(
+    status = SelectField(
                         "Ingrese el estado del manga" ,
+                        choices = [
+                            "Alquilado",
+                            "Disponible"
+                        ],
                         validators=[
                             InputRequired(message='Estado requerido')
                                     ]
