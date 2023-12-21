@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app , db )
 
 app.register_blueprint(mi_blueprint)
-#app.register_blueprint(mangas)
+app.register_blueprint(mangas)
 
 app.register_blueprint(usuarios)
 

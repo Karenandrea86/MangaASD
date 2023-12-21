@@ -11,11 +11,11 @@ def crear():
     form = NewMangaForm()
     if form.validate_on_submit():
         form.populate_obj(p)
-        p.imagen=form.imagen.data.filename
+        p.image_path=form.image_path.data.filename
         app.db.session.add(p)
         app.db.session.commit()
-        archivo = form.imagen.data
-        archivo.save(os.path.abspath(os.getcwd() +"/app/mangas/images/"+p.imagen))
+        archivo = form.image_path.data
+        archivo.save(os.path.abspath(os.getcwd() +"/app/mangas/images/"+p.image_path))
         
         flash("Manga registrado correctamente")
         return redirect('/mangas/listar')

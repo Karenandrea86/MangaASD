@@ -2,18 +2,6 @@ from flask_wtf import  FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import InputRequired, Email
 
-"""
-    class Usuarios(db.Model):
-    __tablename__= "usuarios"
-    id = db.Column(db.Integer, primary_key = True, autoincrement = True)
-    username = db.Column(db.String(50), unique = True)
-    first_name = db.Column(db.String(50))
-    last_name = db.Column(db.String(50))
-    email = db.Column(db.String(100))
-    phone = db.Column(db.String(15))
-    """
-
-
 class UserForm():
     username = StringField("Ingrese su usuario",
                             validators=[InputRequired(
