@@ -1,6 +1,22 @@
 from flask_wtf import  FlaskForm
-from wtforms import StringField,PasswordField,  SubmitField
+from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Email
+
+class LoginForm(FlaskForm):
+    username =StringField(label='Nombre de usuario',
+                        validators=[InputRequired(
+                        message="Nombre de usuario requerido"
+                        )])
+    password =PasswordField(label='Contraseña')
+    
+    style={'class': 'btn-light', 'style': 'background-color: white; margin-top: 5ren;'}
+    
+    submit =SubmitField(label='Iniciar Sesion',
+                        validators=[InputRequired(
+                        message="Contraseña requerida"
+                        )],
+                        render_kw=style
+                        )
 
 class UserForm():
     username = StringField("Ingrese su usuario",
@@ -30,7 +46,8 @@ class UserForm():
                                 message="password"
                         ),
                                         ])
-    
+
+
 class NewUserForm(FlaskForm, UserForm):
     submit = SubmitField("Guardar")
 

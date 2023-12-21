@@ -1,3 +1,5 @@
+{% import 'bootstrap/wtf.html' as wft %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,7 +29,7 @@
                 </div>
                 <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <a href="/templates/index.html" class="btn btn-sm btn-outline-secondary">Volver</a>
+                        <a href="/" class="btn btn-sm btn-outline-secondary">Volver</a>
                     </div>
                 </div>
             </div>
@@ -35,10 +37,12 @@
     </div>
 
     <main class="container py-5 d-flex">
-        <section class="text-light row row-cols-2 g-2 g-lg-5 ">
+        <section class="row row-cols-2 g-2 g-lg-5 ">
             <div class="col-sm-8 p-5">
-              <form class="row g-3 needs-validation" action="" method="POST" novalidate enctype="multipart/form-data">
-                <div class="col-md-12">
+              <form class="row g-3 needs-validation p-4 bg-dark border border-secondary text-light btn-light" action="" method="POST" novalidate enctype="multipart/form-data">
+                <h3>Iniciar Sesion</h3>
+                {{ wft.quick_form(form) }}
+                <!-- <div class="col-md-12">
                   <label for="validationCustomUsername" class="form-label">Nombre de usuario</label>
                   <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend">@</span>
@@ -57,13 +61,10 @@
                 </div>
                 <div class="col-12">
                   <button class="btn btn-secondary" type="submit">Iniciar Sesion</button>
-                </div>
+                </div> -->
               </form>
-              {% if error %}
-                <p class="error"><strong>Error:</strong> {{ error }}
-              {% endif %}
             </div>
-            <div class="col-sm-4 p-5">
+            <div class="col-sm-4 p-5 text-light">
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores quis veniam provident nulla sint aliquid repudiandae. Veniam sit perspiciatis est, voluptate optio consectetur nihil soluta.</p>
             </div>
         </section>

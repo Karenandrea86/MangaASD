@@ -23,6 +23,7 @@
         <th>Apellidos</th>
         <th>Correo</th>
         <th>Celular</th>
+        <th>Contraseña</th>
         <th>Actualizar</th>
         <th>Eliminar</th>
     </thead>
@@ -43,6 +44,9 @@
                 </td>
                 <td>
                     {{usuario.phone}}
+                </td>
+                <td>
+                    {{usuario.password}}
                 </td>
                 <td>
                     <a href="/usuarios/update/{{usuario.id}}" class="btn btn-primary">
