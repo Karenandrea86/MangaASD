@@ -10,6 +10,7 @@
 }
 .card--sm{
     width: 30rem;
+    height: 10rem;
 }
 .card--sm img{
     width: 10rem;
@@ -18,7 +19,20 @@
 .card--sm p{
  max-height: 7rem;
  overflow-x: hidden;
- font-size: 13px;
+ font-size: 10px;
+}
+.card--vertical--sm{
+    width: 15rem;
+}
+.card--vertical--sm img{
+    width: 15rem;
+    height: 10rem;
+    filter: brightness(90%);
+}
+.card--vertical--sm .descrip{
+ height: 5rem;
+ overflow-x: hidden;
+ font-size: 10px;
 }
 .card--ssm{
     width: 20rem;
