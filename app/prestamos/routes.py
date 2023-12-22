@@ -2,12 +2,18 @@ from flask import render_template, redirect, flash
 from app.prestamos import prestamos
 import app
 import os
-from .forms import NewLoanForm, EditLoanForm
 
+from .forms import NewLoanForm, EditLoanForm
 @prestamos.route('/create', methods=['GET', 'POST'])
 def creat():
     p = app.models.Prestamos()
     form = NewLoanForm()
+    mangas = app.models.Mangas.query.filter_by(status="Disponible")
+    print(mangas)
+    form.manga_id.choices = [(manga.id, str(manga.title)) for manga in mangas]
+    usuarios = app.models.Usuarios.query.all()
+    print(usuarios)
+    form.user_id.choices = [(usuario.id, str(usuario.username)) for usuario in usuarios]
     if form.validate_on_submit():
         form.populate_obj(p)
         app.db.session.add(p)
@@ -27,6 +33,12 @@ def listar():
 def edit(prestamo_id):
     p = app.models.Prestamos.query.get(prestamo_id)
     form = EditLoanForm(obj=p)
+    mangas = app.models.Mangas.query.filter_by(status="Disponible")
+    print(mangas)
+    form.manga_id.choices = [(manga.id, str(manga.title)) for manga in mangas]
+    usuarios = app.models.Usuarios.query.all()
+    print(usuarios)
+    form.user_id.choices = [(usuario.id, str(usuario.username)) for usuario in usuarios]
     if form.validate_on_submit():
         form.populate_obj(p)
         app.db.session.commit()

@@ -19,6 +19,43 @@ class MangaForm():
                                  )
                                      ]
                         )
+    image_path = FileField (label="Ingrese la imagen promocional",
+                        validators=[FileRequired(message="Se requiere la imagen promocional"),
+                                    FileAllowed(
+                                        ["jpg","png"],
+                                        message="Solo se aceptan imagenes"
+
+                                    )
+                                    ]
+                       )
+    return_date = DateField(
+                        "Ingrese la fecha de devolución" ,
+                        validators=[
+                            DataRequired(message='Fecha requerida')
+                                    ]
+                        
+                        
+                        )
+    status = SelectField(
+                        "Ingrese el estado del manga" ,
+                        choices = [
+                            "Alquilado",
+                            "Disponible"
+                        ],
+                        validators=[
+                            InputRequired(message='Estado requerido')
+                                    ]
+                        
+                        
+                        )
+    price = IntegerField(
+                        "Ingrese el precio del manga" ,
+                        validators=[
+                            InputRequired(message='Precio requerido')
+                                    ]
+                        
+                        
+                        )
 
 class NewMangaForm(FlaskForm, MangaForm):
     image_path = FileField (label="Ingrese la imagen promocional",
