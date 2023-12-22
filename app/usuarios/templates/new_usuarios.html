@@ -1,6 +1,16 @@
 {%  import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
+    {% for mensaje in get_flashed_messages() %}
+    <div class="alert alert-success">
+        <button type="button"
+            class="close"
+            data-dismiss="alert" >
+            &times;
+        </button>
+        {{ mensaje }}
+    </div>
+    {% endfor %}
     <!doctype html>
     <html lang="en">
         <head>
@@ -43,7 +53,7 @@
         <main class="container py-5 d-flex">
             <section class="text-light row row-cols-2 g-2 g-lg-5 ">
                 <!-- MENU BOTONERIA LATERAL -->  
-                <section class="col-2">
+                <section class="col-3">
                     <div class="d-flex flex-column flex-shrink-0 bg-dark" style="width: 10rem;">
                         <h3 class="fs-4">Menu</h3>
                         <hr>
@@ -82,7 +92,7 @@
                         <hr>
                     </div>
                 </section>
-                <div class="col-sm-6">
+                <div class="col-sm-9">
                     <h4 class="fs-4">Formulario de registro de usuarios</h4>
                     <hr>
                     <form action="" method="post" novalidate class="row g-3">
@@ -116,37 +126,9 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-sm-4 d-flex flex-column">
-                    <h4 class="fs-4">Ultimos usuarios registrados</h4>
-                    <hr>
-                    <div class="container">
-                        <!-- CARTAS AUTOGENERADAS -->
-                        <div class="col pb-5">
-                            <div class="card--ssm border shadow rounded-3 d-flex flex-row">
-                                <div class="card__desc-sm col p-3">
-                                    <h5 class="fw-bold">Nombre de usuario</h5>
-                                    <code class="fs-6 fw-bold">ForestParadiseOrigen</code><br>
-                                    <hr>
-                                    <h7 class="fw-bold">Nombre completo</h7>
-                                    <p>Andres Julian </p><p>Cordoba Ventura</p>
-                                    <h7 class="fw-bold">Correo electronico</h7>
-                                    <p>rontilismar@gmail.com</p>
-                                    <h7 class="fw-bold">Nombre de usuario</h7>
-                                    <p class="number">3219498187</p>
-                                    <h7 class="fw-bold">Contraseña</h7>
-                                    <p>Vegetta777ForEverLoveGod</p>
-                                    <div class="btn-group" role="group">
-                                        <a href="/prestamos/create" class="btn btn-sm btn-danger">Actualizar</a>
-                                        <a href="/prestamos/create" class="btn btn-sm btn-danger">ELiminar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </section>
         </main>
-    
+        
         <footer class="py-5 text-center text-body-secondary bg-dark-subtle">
             <p>Biuld with <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com">Andres Cordoba</a>.</p>
             <p class="mb-0">
