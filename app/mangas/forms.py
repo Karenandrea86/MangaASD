@@ -19,15 +19,6 @@ class MangaForm():
                                  )
                                      ]
                         )
-    image_path = FileField (label="Ingrese la imagen promocional",
-                        validators=[FileRequired(message="Se requiere la imagen promocional"),
-                                    FileAllowed(
-                                        ["jpg","png"],
-                                        message="Solo se aceptan imagenes"
-
-                                    )
-                                    ]
-                       )
     return_date = DateField(
                         "Ingrese la fecha de devolución" ,
                         validators=[
@@ -56,7 +47,6 @@ class MangaForm():
                         
                         
                         )
-
 class NewMangaForm(FlaskForm, MangaForm):
     image_path = FileField (label="Ingrese la imagen promocional",
                         validators=[FileRequired(message="Se requiere la imagen promocional"),
