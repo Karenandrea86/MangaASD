@@ -1,13 +1,133 @@
-{%  extends 'base.html'%}    
 {%  import 'bootstrap/wtf.html' as wtf %}
-
 {% block content %}
-    <h1> Nuevo préstamo</h1>
-        <form 
-            action="" 
-            method="POST" 
-            novalidate
-            enctype="multipart/form-data">
-            {{ wtf.quick_form(form) }}
-        </form>
+    {% for mensaje in get_flashed_messages() %}
+    <div class="alert alert-success">
+        <button type="button"
+            class="close"
+            data-dismiss="alert" >
+            &times;
+        </button>
+        {{ mensaje }}
+    </div>
+    {% endfor %}
+    <!doctype html>
+    <html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Manga ASD</title>
+        <!-- BOOTSTRAP CDN STYLES-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <!-- BOOTSTRAP CDN ICONS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+        <!-- GOOGLE FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <!-- CUSTOM CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}"> <link rel="stylesheet" href="app/templates/styles.css">
+        <link rel="stylesheet" href="../../static/css/styles.css">
+        </head>
+        <body class="bg-dark">
+        <div class="container">
+            <header class="lh-1">
+                <div class="row flex-nowrap justify-content-between align-items-center border-bottom border-secondary py-3">
+                    <div class="col d-grid gap-2 d-md-flex justify-content-md-start">
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Ayuda</button>   
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h1 class="text-bg-dark text-center">MangaASD</h1>
+                    </div>
+                    <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <a href="/" class="btn btn-sm btn-outline-secondary">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    
+        <main class="container py-5 d-flex">
+            <section class="text-light row row-cols-2 g-2 g-lg-5 ">
+                <!-- MENU BOTONERIA LATERAL -->  
+                <section class="col-3">
+                    <div class="d-flex flex-column flex-shrink-0 bg-dark" style="width: 10rem;">
+                        <h3 class="fs-4">Menu</h3>
+                        <hr>
+                            <ul class="nav nav-pills flex-column">
+                                <li>
+                                    <div class="btn-group">
+                                        <a href="/usuarios/listar" class="btn btn-secondary text-start mb-3" style="min-width: 7rem;">
+                                            Usuarios
+                                        </a>
+                                        <a href="/usuarios/create" class="btn btn-secondary text-center mb-3">
+                                            <i class="bi bi-plus-lg"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn-group">
+                                        <a href="/mangas/listar" class="btn btn-secondary text-start mb-3" style="min-width: 7rem;">
+                                            Mangas
+                                        </a>
+                                        <a href="/mangas/create" class="btn btn-secondary text-center mb-3">
+                                            <i class="bi bi-plus-lg"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn-group">
+                                        <a href="/prestamos/listar" class="btn btn-secondary text-start mb-3" style="min-width: 7rem;">
+                                            Prestamos
+                                        </a>
+                                        <a href="/prestamos/create" class="btn btn-secondary text-center mb-3">
+                                            <i class="bi bi-plus-lg"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        <hr>
+                    </div>
+                </section>
+                <div class="col-9">
+                    <h4 class="fs-4">Formulario de registro de usuarios</h4>
+                    <hr>
+                    <form action="" method="post" novalidate class="row g-3">
+                        {{ form.hidden_tag() }}
+                        <div class="bg-dark col-6">
+                            {{ form.user_id.label }}
+                            {{ form.user_id(class_="form-control") }}
+                        </div>
+                        <div class="bg-dark col-6">
+                            {{ form.manga_id.label }}
+                            {{ form.manga_id(class_="form-control") }}
+                        </div>
+                        <div class="bg-dark col-12">
+                            {{ form.return_date.label }}
+                            {{ form.return_date(class_="form-control") }}
+                        </div>
+                        <div class="col-12">
+                            {{ form.submit(class_="form-control btn btn-secondary") }}
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="py-5 text-center text-body-secondary bg-dark-subtle">
+            <p>Biuld with <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com">Andres Cordoba</a>.</p>
+            <p class="mb-0">
+                <a href="#">Back to top</a>
+            </p>
+            </footer>
+        <!-- BOOTSTRAP JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        </body>
+    </html>
+          
 {% endblock %}
+  
