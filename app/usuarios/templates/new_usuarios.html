@@ -1,13 +1,164 @@
-{%  extends 'base.html'%}    
 {%  import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
-    <h1> Nuevo usuario</h1>
-        <form 
-            action="" 
-            method="POST" 
-            novalidate
-            enctype="multipart/form-data">
-            {{ wtf.quick_form(form) }}
-        </form>
+    <!doctype html>
+    <html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Manga ASD</title>
+        <!-- BOOTSTRAP CDN STYLES-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <!-- BOOTSTRAP CDN ICONS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+        <!-- GOOGLE FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <!-- CUSTOM CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}"> <link rel="stylesheet" href="app/templates/styles.css">
+        <link rel="stylesheet" href="../../static/css/styles.css">
+        </head>
+        <body class="bg-dark">
+        <div class="container">
+            <header class="lh-1">
+                <div class="row flex-nowrap justify-content-between align-items-center border-bottom border-secondary py-3">
+                    <div class="col d-grid gap-2 d-md-flex justify-content-md-start">
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Ayuda</button>   
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h1 class="text-bg-dark text-center">MangaASD</h1>
+                    </div>
+                    <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <a href="/" class="btn btn-sm btn-outline-secondary">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    
+        <main class="container py-5 d-flex">
+            <section class="text-light row row-cols-2 g-2 g-lg-5 ">
+                <!-- MENU BOTONERIA LATERAL -->  
+                <section class="col-2">
+                    <div class="d-flex flex-column flex-shrink-0 bg-dark" style="width: 10rem;">
+                        <h3 class="fs-4">Menu</h3>
+                        <hr>
+                            <ul class="nav nav-pills flex-column">
+                                <li>
+                                    <div class="btn-group">
+                                        <a href="/usuarios/listar" class="btn btn-secondary text-start mb-3" style="min-width: 7rem;">
+                                            Usuarios
+                                        </a>
+                                        <a href="/usuarios/create" class="btn btn-secondary text-center mb-3">
+                                            <i class="bi bi-plus-lg"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn-group">
+                                        <a href="/mangas/listar" class="btn btn-secondary text-start mb-3" style="min-width: 7rem;">
+                                            Mangas
+                                        </a>
+                                        <a href="/mangas/create" class="btn btn-secondary text-center mb-3">
+                                            <i class="bi bi-plus-lg"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn-group">
+                                        <a href="/prestamos/listar" class="btn btn-secondary text-start mb-3" style="min-width: 7rem;">
+                                            Prestamos
+                                        </a>
+                                        <a href="/prestamos/create" class="btn btn-secondary text-center mb-3">
+                                            <i class="bi bi-plus-lg"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        <hr>
+                    </div>
+                </section>
+                <div class="col-sm-6">
+                    <h4 class="fs-4">Formulario de registro de usuarios</h4>
+                    <hr>
+                    <form action="" method="post" novalidate class="row g-3">
+                        {{ form.hidden_tag() }}
+                        <div class="bg-dark col-sm-4">
+                            {{ form.first_name.label }}
+                            {{ form.first_name(class_="form-control") }}
+                        </div>
+                        <div class="bg-dark col-sm-4">
+                            {{ form.last_name.label }}
+                            {{ form.last_name(class_="form-control") }}
+                        </div>
+                        <div class="bg-dark col-sm-4">
+                            {{ form.username.label }}
+                            {{ form.username(class_="form-control") }}
+                        </div>
+                        <div class="bg-dark col-sm-6">
+                            {{ form.email.label }}
+                            {{ form.email(class_="form-control") }}
+                        </div>
+                        <div class="bg-dark col-sm-6">
+                            {{ form.phone.label }}
+                            {{ form.phone(class_="form-control") }}
+                        </div>
+                        <div class="col-sm-12 mb-3">
+                            {{ form.password.label }}
+                            {{ form.password(class_="form-control") }}
+                        </div>
+                        <div class="col-sm-12">
+                            {{ form.submit(class_="form-control btn btn-secondary") }}
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-4 d-flex flex-column">
+                    <h4 class="fs-4">Ultimos usuarios registrados</h4>
+                    <hr>
+                    <div class="container">
+                        <!-- CARTAS AUTOGENERADAS -->
+                        <div class="col pb-5">
+                            <div class="card--ssm border shadow rounded-3 d-flex flex-row">
+                                <div class="card__desc-sm col p-3">
+                                    <h5 class="fw-bold">Nombre de usuario</h5>
+                                    <code class="fs-6 fw-bold">ForestParadiseOrigen</code><br>
+                                    <hr>
+                                    <h7 class="fw-bold">Nombre completo</h7>
+                                    <p>Andres Julian </p><p>Cordoba Ventura</p>
+                                    <h7 class="fw-bold">Correo electronico</h7>
+                                    <p>rontilismar@gmail.com</p>
+                                    <h7 class="fw-bold">Nombre de usuario</h7>
+                                    <p class="number">3219498187</p>
+                                    <h7 class="fw-bold">Contraseña</h7>
+                                    <p>Vegetta777ForEverLoveGod</p>
+                                    <div class="btn-group" role="group">
+                                        <a href="/prestamos/create" class="btn btn-sm btn-danger">Actualizar</a>
+                                        <a href="/prestamos/create" class="btn btn-sm btn-danger">ELiminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    
+        <footer class="py-5 text-center text-body-secondary bg-dark-subtle">
+            <p>Biuld with <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com">Andres Cordoba</a>.</p>
+            <p class="mb-0">
+                <a href="#">Back to top</a>
+            </p>
+            </footer>
+        <!-- BOOTSTRAP JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        </body>
+    </html>
+          
 {% endblock %}
+  
