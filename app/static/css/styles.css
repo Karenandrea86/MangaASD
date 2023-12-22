@@ -20,6 +20,12 @@
  overflow-x: hidden;
  font-size: 13px;
 }
+.card--ssm{
+    width: 20rem;
+}
+.card--ssm p{
+    font-size: 13px;
+   }
 ::-webkit-scrollbar{
     width: 0.5rem;
     background-color: none;

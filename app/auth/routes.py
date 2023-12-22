@@ -1,9 +1,10 @@
-from flask_login import login_user, current_user, logout_user
-from flask import render_template, redirect, flash 
 from app.auth import auth
-from .forms import LoginForm
 import app
-from .forms import NewUserForm, EditUserForm
+from flask import render_template, redirect, flash
+from flask_login import login_user, logout_user
+import wtforms
+from .forms import *
+
 
 @auth.route('/login',
             methods=["GET",'POST'])
@@ -37,5 +38,4 @@ def register():
         app.db.session.commit()
         flash("Usuario registrado correctamente")
         return redirect('/')
-    return render_template('register.html', 
-                            form = form)
+    return render_template('register.html', form=form, wtf=wtforms)
