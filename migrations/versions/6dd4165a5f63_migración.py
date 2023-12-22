@@ -1,8 +1,8 @@
-"""usuario and password
+"""Migración
 
-Revision ID: 5f88097318cd
+Revision ID: 6dd4165a5f63
 Revises: 
-Create Date: 2023-12-21 14:29:27.503463
+Create Date: 2023-12-22 09:58:30.238507
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5f88097318cd'
+revision = '6dd4165a5f63'
 down_revision = None
 branch_labels = None
 depends_on = None

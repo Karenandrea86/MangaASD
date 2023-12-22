@@ -39,7 +39,6 @@ class Mangas(db.Model):
     price = db.Column(db.Numeric(precision = 10, scale = 2))
     
 # Tabla de Préstamos
-
 class Prestamos(db.Model):
     __tablename__= "prestamos"
     id = db.Column(db.Integer, primary_key = True, autoincrement = True)
