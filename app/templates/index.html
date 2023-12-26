@@ -23,8 +23,10 @@
                         <button type="button" class="btn btn-sm btn-outline-secondary">Ayuda</button>   
                     </div>
                 </div>
-                <div class="col">
-                    <h1 class="text-bg-dark text-center">MangaASD</h1>
+                <div class="col d-flex justify-content-center py-3">
+                    <img src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}" style="width: 15rem;">
+
+                    <!-- <h1 class="text-bg-dark text-center">MangaASD</h1> -->
                 </div>
                 <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
                     <div class="btn-group" role="group">
@@ -34,7 +36,7 @@
                 </div>
             </div>
             <div class="row flex-nowrap justify-content-center align-items-center border-bottom border-secondary">
-                <nav class="nav nav-underline justify-content-between">
+                <nav class="nav nav-underline justify-content-around">
                     <a class="nav-item nav-link link-light" href="#">Nuevos</a>
                     <a class="nav-item nav-link link-light" href="#">Mas populares</a>
                     <a class="nav-item nav-link link-light" href="#">Nekketsu</a>
@@ -80,7 +82,7 @@
                                                     <h6><strong>Unidades dispobles</strong></h6>
                                                 </div>
                                                 <div class="col-4">
-                                                    <a href="/prestamos/create"><button class="btn btn-sm btn-danger">Alquilar</button>
+                                                    <a href="/prestamos/create"><button class="btn btn-sm btn-danger">Alquilar</button></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -94,10 +96,14 @@
             </section>
         </main>
     </div>
-    <footer class="py-5 text-center text-body-secondary bg-dark-subtle">
-        <p>Biuld with <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com">Andres Cordoba</a>.</p>
+    <footer class="py-5 text-center text-body-secondary bg-black">
+        <p class="text-light">Build with 
+            <a class="link-secondary" href="https://getbootstrap.com/">Bootstrap</a>
+             by 
+            <a class="link-secondary" href="https://twitter.com">Andres Cordoba</a>.
+        </p>
         <p class="mb-0">
-          <a href="#">Back to top</a>
+          <a class="link-secondary" href="#">Back to top</a>
         </p>
       </footer>
     <!-- BOOTSTRAP JS -->

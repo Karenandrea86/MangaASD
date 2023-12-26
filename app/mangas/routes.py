@@ -4,21 +4,24 @@ import app
 import os
 from .forms import NewMangaForm, EditMangaForm
 
-@mangas.route('/create',
-                 methods=['GET','POST'])
+@mangas.route('/create', methods=['GET','POST'])
 def crear():
     p = app.models.Mangas()
     form = NewMangaForm()
-    if form.validate_on_submit():
-        form.populate_obj(p)
-        p.image_path=form.image_path.data.filename
-        app.db.session.add(p)
-        app.db.session.commit()
-        archivo = form.image_path.data
-        archivo.save(os.path.abspath(os.getcwd() +"/app/mangas/images/"+p.image_path))
-        
-        flash("Manga registrado correctamente")
-        return redirect('/mangas/listar')
+    print(form.validate())
+    if form.validate():
+        print('Comenzo la validacion')
+        try:
+            form.populate_obj(p)
+            p.image_path=form.image_path.data.filename
+            app.db.session.add(p)
+            app.db.session.commit()
+            archivo = form.image_path.data
+            archivo.save(os.path.abspath(os.getcwd() +"/app/mangas/images/"+p.image_path))
+            print("Manga registrado correctamente")
+            return redirect('/mangas/listar')
+        except:
+            print('Ha ocurrido un error')
     return render_template('new_mangas.html',
                            form=form )
 
@@ -36,7 +39,7 @@ def editar(manga_id):
     if form.validate_on_submit():
         form.populate_obj(p)
         app.db.session.commit()
-        flash('Manga actualizado')
+        print('Manga actualizado')
         return redirect('/mangas/listar')
     return render_template('new_mangas.html' ,
                            form = form)
