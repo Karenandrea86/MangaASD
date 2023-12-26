@@ -1,5 +1,5 @@
 from flask_wtf import  FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, SelectField
 from wtforms.validators import InputRequired, Email
 
 class UserForm():
@@ -30,6 +30,16 @@ class UserForm():
                                 message="password"
                         ),
                                         ])
+    rol = SelectField(
+        "Ingrese el rol del usuario",
+        choices = [
+            "1",
+            "2"
+        ],
+        validators=[
+            InputRequired(message='Estado requerido')
+        ]                        
+    )
     
 class NewUserForm(FlaskForm, UserForm):
     submit = SubmitField("Guardar")

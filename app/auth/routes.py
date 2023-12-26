@@ -14,9 +14,14 @@ def login():
             #selecciona al Usuarios por username
             c =app.models.Usuarios.query.filter_by(username=form.username.data).first()
             if c is None or not c.check_password(form.password.data):
-                login_user(c, remember=True)
-                flash('Bienvenido al sistema')
-                return redirect('/')
+                if c.rol is (1):  # Comprueba si el rol es 1 o 2
+                    login_user(c, remember=True)
+                    flash('Bienvenido al sistema')
+                    return redirect('/')
+                elif c.rol is (2):
+                    login_user(c, remember=True)
+                    flash('Bienvenido al sistema')
+                    return redirect('/usuarios/listar')
     except:
             flash('Usuario o contraseña incorrectos. Intentalo de nuevo.')
     
