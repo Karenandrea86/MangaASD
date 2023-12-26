@@ -7,7 +7,11 @@ class LoginForm(FlaskForm):
                         validators=[InputRequired(
                         message="Nombre de usuario requerido"
                         )])
-    password =PasswordField(label='Contraseña')
+    password =PasswordField(label='Contraseña',
+                            validators=[InputRequired(
+                                message="Contraseña requerida"
+                                )]
+                            )
     
     style={'class': 'btn-light', 'style': 'background-color: white; margin-top: 5ren;'}
     

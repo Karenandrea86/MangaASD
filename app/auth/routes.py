@@ -1,5 +1,5 @@
 from flask_login import login_user, current_user, logout_user
-from flask import render_template, redirect, flash
+from flask import render_template, redirect, flash, request
 from flask_login import login_required
 from app.auth import auth
 from .forms import LoginForm
@@ -9,17 +9,17 @@ import app
             methods=["GET",'POST'])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():
-        #selecciona al Usuarios por username
-        c =app.models.Usuarios.query.filter_by(username=form.username.data).first()
-        if c is None or not c.check_password(form.password.data):
-            flash('Usuario o contraseña incorrectos')
-            return redirect('/auth/login')
-            #mensaje flask de usuario no existente
-        else:
-            login_user(c, remember=True)
-            flash('Bienvenido al sistema')
-            return redirect('/mangas/listar')
+    try:
+        if form.validate_on_submit():
+            #selecciona al Usuarios por username
+            c =app.models.Usuarios.query.filter_by(username=form.username.data).first()
+            if c is None or not c.check_password(form.password.data):
+                login_user(c, remember=True)
+                flash('Bienvenido al sistema')
+                return redirect('/mangas/listar')
+    except:
+            flash('Usuario o contraseña incorrectos. Intentalo de nuevo.')
+    
     return render_template('login.html', form = form)
 
 @auth.route('/logout')
