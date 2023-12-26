@@ -8,6 +8,12 @@
     background-size: cover;
     filter:drop-shadow(100%);
 }
+.card__thumbnail{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter:drop-shadow(100%);
+}
 .card--sm{
     width: 30rem;
     height: 14rem;
@@ -32,7 +38,7 @@
 .card--vertical--sm .descrip{
  height: 5rem;
  overflow-x: hidden;
- font-size: 10px;
+ font-size: 15px;
 }
 .card--ssm{
     width: 20rem;

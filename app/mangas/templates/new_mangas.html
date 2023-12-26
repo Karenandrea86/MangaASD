@@ -92,10 +92,10 @@
                     </div>
                 </section>
                 <div class="col-sm-9">
-                    <h4 class="fs-4">Formulario de registro de usuarios</h4>
+                    <h4 class="fs-4">Formulario de registro de mangas</h4>
                     <hr>
-                    <form action="" method="post" class="row g-3">
-                        {{ form.hidden_tag() }}
+                    <form action="" method="post" novalidate enctype="multipart/form-data" class="row g-3">
+                        <!-- {{ wtf.quick_form(form) }} -->
                         <div class="bg-dark col-sm-6">
                             {{ form.title.label }}
                             {{ form.title(class_="form-control") }}
@@ -104,7 +104,7 @@
                             {{ form.description.label }}
                             {{ form.description(class_="form-control") }}
                         </div>
-                        <div class="col-sm-12 mb-3">
+                        <div class="col-sm-12">
                             {{ form.image_path.label }}
                             {{ form.image_path(class_="form-control") }}
                         </div>
@@ -112,11 +112,11 @@
                             {{ form.status.label }}
                             {{ form.status(class_="form-control") }}
                         </div>
-                        <div class="col-sm-6 mb-3">
+                        <div class="col-sm-6">
                             {{ form.price.label }}
                             {{ form.price(class_="form-control") }}
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 pt-3">
                             {{ form.submit(class_="form-control btn btn-secondary") }}
                         </div>
                     </form>

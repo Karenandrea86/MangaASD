@@ -5,7 +5,7 @@ import os
 
 from .forms import NewLoanForm, EditLoanForm
 @prestamos.route('/create', methods=['GET', 'POST'])
-def creat():
+def crear():
     p = app.models.Prestamos()
     form = NewLoanForm()
     mangas = app.models.Mangas.query.filter_by(status="Disponible")
