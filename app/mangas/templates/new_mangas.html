@@ -94,19 +94,19 @@
                 <div class="col-sm-9">
                     <h4 class="fs-4">Formulario de registro de usuarios</h4>
                     <hr>
-                    <form action="" method="post" novalidate class="row g-3">
+                    <form action="" method="post" class="row g-3">
                         {{ form.hidden_tag() }}
-                        <div class="bg-dark col-sm-4">
+                        <div class="bg-dark col-sm-6">
                             {{ form.title.label }}
                             {{ form.title(class_="form-control") }}
                         </div>
-                        <div class="bg-dark col-sm-4">
+                        <div class="bg-dark col-sm-6">
                             {{ form.description.label }}
                             {{ form.description(class_="form-control") }}
                         </div>
-                        <div class="bg-dark col-sm-4">
-                            {{ form.return_date.label }}
-                            {{ form.return_date(class_="form-control") }}
+                        <div class="col-sm-12 mb-3">
+                            {{ form.image_path.label }}
+                            {{ form.image_path(class_="form-control") }}
                         </div>
                         <div class="bg-dark col-sm-6">
                             {{ form.status.label }}
