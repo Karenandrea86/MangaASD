@@ -87,9 +87,13 @@ get_flashed_messages() %}
               </ul>
             </nav>
           </div>
-          <div class="col">
-            <h1 class="text-bg-dark text-center">MangaASD</h1>
-          </div>
+          <div class="col align-center d-flex justify-content-center py-3">
+            <img
+              src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}"
+              style="width: 15rem;"
+            />
+            <!-- <h1 class="text-bg-dark text-center" style="font-weight: 700;">MangaASD</h1> -->
+          </div>  
           <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
             <div
               class="btn-group"
@@ -102,31 +106,24 @@ get_flashed_messages() %}
         </div>
       </header>
     </div>
-    <main class="container py-5">
+    <main class="container py-5" style="height: 100vh;">
       <section class="text-light row">
         <div class="col">
-          <div class="d-flex justify-content-between">
-            <h4 class="fs-4">Lista de prestamos registrados</h4>
+          <div class="d-flex justify-content-between mb-3">
+            <h2>Lista de prestamos registrados</h2>
             <div class="btn-group btn-group-sm">
               <a
-                href="/prestamos/listar"
-                class="btn btn-outline-secondary disabled text-start mb-3"
+                href="/prestamos/create"
+                class="btn btn-secondary text-start mb-3"
                 style="min-width: 7rem;"
               >
-                Prestamos
-              </a>
-              <a
-                href="/prestamos/create"
-                class="btn btn-outline-secondary text-center mb-3"
-              >
-                <i class="bi bi-plus-lg"></i>
+                Registrar prestamo
               </a>
             </div>
           </div>
-          <hr />
-          <div class="container row align-content-between">
-            <table class="table table-dark">
-              <thead>
+          <div class="container row align-content-between p-4 border border-secondary rounded-3">
+            <table class="table table-dark table-hover">
+              <thead class="table-active">
                 <tr>
                   <th scope="col">ID Usuario</th>
                   <th scope="col">ID Manga</th>
@@ -137,7 +134,7 @@ get_flashed_messages() %}
                 </tr>
               </thead>
 
-              <tbody class="table-group-divider">
+              <tbody>
                 {% for prestamo in prestamos %}
                 <tr>
                   <td>
@@ -177,17 +174,27 @@ get_flashed_messages() %}
       </section>
     </main>
 
-    <footer class="py-5 text-center text-body-secondary bg-dark-subtle">
-      <p>
-        Biuld with
-        <a href="https://getbootstrap.com/">Bootstrap</a>
-        by
-        <a href="https://twitter.com">Andres Cordoba</a>
-        .
-      </p>
-      <p class="mb-0">
-        <a href="#">Back to top</a>
-      </p>
+    <footer
+      class="py-5 text-center text-body-secondary bg-black"
+    >
+      <div class="row">
+        <div class="col-12">
+          <p class="text-light">
+            Biuld with
+            <a class="link-secondary" href="https://getbootstrap.com/">
+              Bootstrap
+            </a>
+            by
+            <a class="link-secondary" href="https://twitter.com">
+              Andres Cordoba
+            </a>
+            .
+          </p>
+          <p class="mb-0 text-ligth">
+            <a class="link-secondary" href="#">Back to top</a>
+          </p>
+        </div>
+      </div>
     </footer>
     <!-- BOOTSTRAP JS -->
     <script
