@@ -14,6 +14,7 @@ class Usuarios(db.Model, UserMixin):
     email = db.Column(db.String(100))
     phone = db.Column(db.String(15))
     password = db.Column(db.String(120))
+    rol = db.Column(db.Integer, db.ForeignKey('rol.id'))
     
     def setPassword(self,password):
         self.password = generate_password_hash(password)
@@ -34,7 +35,7 @@ class Mangas(db.Model):
     description = db.Column(db.Text)
     image_path = db.Column(db.String(255))
     rental_date = db.Column(db.DateTime, default = datetime.utcnow)
-    return_date = db.Column(db.DateTime, default = datetime.utcnow)
+    return_date = db.Column(db.DateTime)
     status = db.Column(db.String(20))
     price = db.Column(db.Numeric(precision = 10, scale = 2))
     
@@ -46,3 +47,9 @@ class Prestamos(db.Model):
     manga_id = db.Column(db.Integer, db.ForeignKey('mangas.id'))
     loan_date = db.Column(db.DateTime, default = datetime.utcnow)
     return_date = db.Column(db.DateTime)
+    
+# Tabla de Rol
+class Rol(db.Model):
+    __tablename__= "rol"
+    id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    name = db.Column(db.String(50))
