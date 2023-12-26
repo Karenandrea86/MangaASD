@@ -9,6 +9,9 @@ from .forms import NewUserForm, EditUserForm
 def creat():
     p = app.models.Usuarios()
     form = NewUserForm()
+    # Rol = app.models.Rol.query.all()
+    # print(Rol)
+    # form.id.choices = [(rol.id, str(rol.id)) for rol in Rol]
     if form.validate_on_submit():
         form.populate_obj(p)
         app.db.session.add(p)

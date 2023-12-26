@@ -122,7 +122,11 @@
                             {{ form.phone.label }}
                             {{ form.phone(class_="form-control") }}
                         </div>
-                        <div class="col-sm-12 mb-3">
+                        <div class="col-sm-6">
+                            {{ form.rol.label}}
+                            {{ form.rol(class_="form-control") }}
+                        </div>
+                        <div class="col-sm-6 mb-3">
                             {{ form.password.label }}
                             {{ form.password(class_="form-control") }}
                         </div>
@@ -158,6 +162,10 @@
                         <div class="bg-dark col-sm-6">
                             {{ form.phone.label }}
                             {{ form.phone(class_="form-control") }}
+                        </div>
+                        <div class="">
+                            {{ form.rol.label(hidden=True)}}
+                            {{ form.rol(class_="form-control", hidden=True, value='1') }}
                         </div>
                         <div class="col-sm-12 mb-3">
                             {{ form.password.label }}
