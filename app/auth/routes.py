@@ -16,7 +16,7 @@ def login():
             if c is None or not c.check_password(form.password.data):
                 login_user(c, remember=True)
                 flash('Bienvenido al sistema')
-                return redirect('/mangas/listar')
+                return redirect('/')
     except:
             flash('Usuario o contraseña incorrectos. Intentalo de nuevo.')
     
@@ -27,4 +27,4 @@ def login():
 def logout():
     logout_user()
     flash('Sesión cerrada con exito')
-    return redirect('/auth/login')
+    return redirect('/')

@@ -1,4 +1,5 @@
 from flask import render_template, redirect, flash
+from flask_login import current_user
 from app.usuarios import usuarios
 import app
 import os
@@ -12,8 +13,12 @@ def creat():
         form.populate_obj(p)
         app.db.session.add(p)
         app.db.session.commit()
-        flash("Usuario registrado correctamente")
-        return redirect('/usuarios/listar')
+        if current_user.is_authenticated:
+            flash("Usuario registrado correctamente")
+            return redirect('/usuarios/listar')
+        else:
+            flash("Usuario registrado correctamente")
+            return redirect('/')
     return render_template('new_usuarios.html', 
                             form = form)
 

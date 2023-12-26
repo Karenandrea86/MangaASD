@@ -48,46 +48,47 @@ get_flashed_messages() %}
           class="row flex-nowrap justify-content-between align-items-center border-bottom border-secondary pb-4 py-3"
         >
           <div class="col d-grid gap-2 d-md-flex justify-content-md-start">
-            <div
-              class="btn-group"
-              role="group"
-              aria-label="Basic outlined example"
-            >
-              <a href="/" class="btn btn-sm btn-secondary">Volver</a>
-            </div>
-          </div>
-          <div class="col d-flex justify-content-center">
-            <img
-              src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}"
-              style="width: 15rem;"
-            />
-            <!-- <h1 class="text-bg-dark text-center">MangaASD</h1> -->
-          </div>
-          <div class="col d-flex d-md-flex justify-content-end">
             <nav class="nav nav-underline justify-content-end">
               <ul class="nav nav-pills flex-row justify-content-end">
                   <li>
                       <div class="btn-group btn-group-sm me-2">
-                          <a href="/mangas/listar" class="btn btn-secondary text-start" style="min-width: 7rem;">
+                          <a href="/mangas/listar" class="btn btn-outline-secondary text-start" style="min-width: 7rem;">
                               Mangas
                           </a>
-                          <a href="/mangas/create" class="btn btn-secondary text-center">
+                          <a href="/mangas/create" class="btn btn-outline-secondary text-center">
                               <i class="bi bi-plus-lg"></i>
                           </a>
                       </div>
                   </li>
                   <li>
                       <div class="btn-group btn-group-sm">
-                          <a href="/prestamos/listar" class="btn btn-secondary text-start" style="min-width: 7rem;">
+                          <a href="/prestamos/listar" class="btn btn-outline-secondary text-start" style="min-width: 7rem;">
                               Prestamos
                           </a>
-                          <a href="/prestamos/create" class="btn btn-secondary text-center">
+                          <a href="/prestamos/create" class="btn btn-outline-secondary text-center">
                               <i class="bi bi-plus-lg"></i>
                           </a>
                       </div>
                   </li>
               </ul>
           </nav>
+          </div>
+          <div class="col align-center d-flex justify-content-center py-3">
+            <img
+              src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}"
+              style="width: 15rem;"
+            />
+            <!-- <h1 class="text-bg-dark text-center" style="font-weight: 700;">MangaASD</h1> -->
+          </div>
+          <div class="col d-flex d-md-flex justify-content-end">
+            <div
+              class="btn-group"
+              role="group"
+              aria-label="Basic outlined example"
+            >
+              <a href="/" class="btn btn-sm btn-outline-secondary">Volver</a>
+            </div>
+            
             
           </div>
         </div>
@@ -96,23 +97,18 @@ get_flashed_messages() %}
     <main class="container py-5" style="height: 100vh;">
         <section class="text-light row ">
             <div class="col">
-                <div class="d-flex justify-content-between">
-                    <h3 class="fs-2">Lista de usuarios registrados</h3>
+                <div class="d-flex justify-content-between mb-3">
+                    <h2>Lista de usuarios registrados</h2>
                     <div class="btn-group btn-group-sm">
-                        <a href="/usuarios/listar" class="btn btn-secondary disabled text-start mb-3" style="min-width: 7rem;">
-                            Usuarios
-                        </a>
-                        <a href="/usuarios/create" class="btn btn-secondary text-center mb-3">
-                            <i class="bi bi-plus-lg"></i>
+                        <a href="/usuarios/create" class="btn btn-secondary text-start mb-3" style="min-width: 7rem;">
+                            Agregar usuario
                         </a>
                     </div>
                 </div>
-                <hr>
-                <div class=" row align-content-between align-content-center">
-        
-                    <table class="table table-dark table-hover">
-                      <thead style="height: 50px;">
-                        <tr class="table-active fs-6">
+                <div class="container row align-content-between p-4 border border-secondary rounded-3">
+                  <table class="table table-dark table-hover">
+                    <thead class="table-active">
+                      <tr>
                           <th scope="col">Nombre de usuario</th>
                           <th scope="col">Nombres</th>
                           <th scope="col">Apellidos</th>
