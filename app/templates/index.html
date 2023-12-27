@@ -145,19 +145,22 @@
                                                         </div>
                                                         <!-- CONDICIONAR EL BOTON -->
                                                         {% if current_user.is_authenticated %}
-                                                        <!--<div class="col-4">
-                                                            <a href="/prestamos/create"><button class="btn btn-sm btn-danger">Alquilar</button></a>
-                                                        </div>-->
-                                                        <div class="col-4">
-                                                            <a href="/prestamos/create?manga_id={{manga_id}}"><button class="btn btn-sm btn-danger">Alquilar</button></a>
+                                                        <div class="col-5">
+                                                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#{{ manga.title }}">
+                                                                Ver mas
+                                                                <i class="ms-2 bi bi-three-dots-vertical"></i>
+                                                            </button>
                                                         </div>
+                                                        <!-- <div class="col-4">
+                                                            <a href="/prestamos/create?manga_id={{manga_id}}"><button class="btn btn-sm btn-danger">Alquilar</button></a>
+                                                        </div> -->
                                                         {% endif %}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="{{ manga.title }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg modal-fullscreen-lg-down">
                                                 <div class="modal-content bg-dark text-light rounded-3">
                                                     <div class="modal-header">
