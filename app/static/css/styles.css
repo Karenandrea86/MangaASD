@@ -1,6 +1,29 @@
 *{
     font-family: 'Manrope', sans-serif;
 }
+.auth__card__container{
+    min-width: 25rem;
+    height: auto;
+}
+.auth__card__info{
+    height: auto;
+}
+.auth__card__name{
+    font-size: 19px;
+    font-weight: 600;
+    height: 0.5rem;
+}
+.auth__card__rol{
+    font-size: 16px;
+    font-weight: 600;
+    height: 0.5rem;
+}
+.auth__card__img{
+    width: 3rem;
+    height: 2.6rem;
+
+    background-color: none;
+}
 .spy_family__promotion--large2{
     background-image: url('https://www.ungeek.ph/wp-content/uploads/2022/04/spy_x_family_where_to-watch_online.jpg');
     background-position: center center;
