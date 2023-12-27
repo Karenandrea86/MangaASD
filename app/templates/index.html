@@ -15,50 +15,47 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}"> <link rel="stylesheet" href="app/templates/styles.css">
   </head>
   <body class="bg-dark">
-    <div class="container">
-        <header class="lh-1">
-            <div class="row flex-nowrap justify-content-between align-items-center border-bottom border-secondary py-3">
-                <div class="col-4 d-flex justify-content-center py-3">
-                    <img src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}" style="width: 15rem;">
-
-                    <!-- <h1 class="text-bg-dark text-center">MangaASD</h1> -->
-                </div>
-                <div class="col-8 d-grid gap-2 d-md-flex justify-content-md-end">
+    <main class="container-lg">
+        <header class="lh-sm">
+            <section class="px-3 hstack gap-3 flex-nowrap justify-content-between align-items-center border-bottom border-secondary py-3">
+                <section class="d-flex justify-content-center py-3">
+                    <img src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}" style="width: 10rem;">
+                </section>
+                <section class="d-grid gap-2 ms-auto d-md-flex justify-content-md-end">
                     {% if current_user.is_authenticated %}
-                    <div class="border border-secondary rounded text-light p-3 auth__card__container">
+                    <!-- CONTENEDOR INFO USUARIO -->
+                    <div class="text-light p-0 d-grid justify-content-end" style="min-width: auto; ">
                         <div class="row">
-                            <div class="col-10 border-end border-secondary auth__card__info">
-                                <div class="row">
-                                    <p class="auth__card__name mb-4 text-light">{{current_user.username9}}</p>
-                                </div>
-                                <div class="row">
-                                    <div class="col-4">
-                                          <p class="auth__card__rol fst-italic">Publisher</p>
-                                    </div>
-                                    <div class="col-8 text-end">
-                                        <a class="link-secondary" href="/auth/logout">Cerrar Sesion</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-2 auth__card__img">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                                  </svg>
+                            <!-- SECCION DE INFORMACION -->
+                            <div class="col-8 d-flex flex-column justify-content-center align-items-end">
+                                <!-- NOMBRE DEUSUARIO -->
+                                <p class="text-light p-1 m-0 fw-bold fs-5">{{current_user.username}}</p>
+                                <!-- ROL DE USUARIO -->
+                                {% if current_user.rol == 1 %}
+                                    <p class="p-0 m-1 align-middle">Cliente</p>
+                                {% elif current_user.rol == 2 %}
+                                    <p class="p-0 m-0 fw-lighter align-middle">Publicador</p>
+                                {% endif %}
+                            </div>   
+                            <!-- SECCION DE FOTO -->
+                            <div class="col-4 m-0 p-0 d-flex align-items-center">
+                                <img src="https://www.verywellmind.com/thmb/pwEmuUJ6KO9OF8jeiQCDyKnaVQI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1187609003-73c8baf32a6a46a6b84fe931e0c51e7e.jpg" width="50" height="50" class="object-fit-cover bg-secondary-subtle" style="border-radius: 50%;" alt="Foto de perfil de usuario">
                             </div>
                         </div>
-                    </div> 
-                    <!-- <div class="btn-group" role="group">
-                        <a href="auth/logout" class="btn btn-sm btn-outline-secondary">Cerrar Sesion</a>
-                    </div> -->
+                    </div>
                     {% else %}
                     <div class="btn-group" role="group">
                         <a href="auth/login" class="btn btn-sm btn-outline-secondary">Iniciar Sesion</a>
                         <a href="usuarios/create" class="btn btn-sm btn-outline-secondary">Registrarme</a>
                     </div>
                     {% endif %}
-                </div>
-            </div>
+                </section>
+                <section class="">
+                    {% if current_user.is_authenticated %}
+                        <a href="/auth/logout" class="btn btn-secondary">Salir <i class="bi bi-box-arrow-right ms-2"></i></a>
+                    {% endif %}
+                </section>
+            </section>
             <div class="row flex-nowrap justify-content-center align-items-center border-bottom border-secondary">
                 <nav class="nav nav-underline justify-content-around">
                     <a class="nav-item nav-link link-light" href="#">Nuevos</a>
@@ -77,52 +74,88 @@
         </header>
         
         <section class="container-fluid py-3">
-            <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary spy_family__promotion--large2">
-                <div class="col-lg-6 px-0 text-light">
-                  <h1 class="display-4 fst-italic">Nueva edición de Spy Family</h1>
-                  <p class="lead my-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam qui fugit corporis totam sit, rerum tenetur adipisci provident neque, illum consequatur, ab sunt! Maiores ex repellendus hic, iste omnis inventore.</p>
-                  <p class="lead mb-0"><a href="#" class="btn btn-light text-secondary fw-bold">Ver ahora...</a></p>
+            <div id="carouselExampleCaptions" class="carousel slide">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
+                <div class="carousel-inner rounded-3">
+                    <div class="carousel-item active rounded-3">
+                        <img src="https://www.ungeek.ph/wp-content/uploads/2022/04/spy_x_family_where_to-watch_online.jpg" class="d-block w-100 object-fit-cover rounded-3 carrousel__brightness--50" style="height: 30rem;">
+                        <div class="carousel-caption d-none d-md-block">
+                        <h5>Nueva edición de Spy X Family</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                        {% if current_user.is_authenticated %}
+                            <a href="/" class="btn btn-secondary">Alquilar</a>
+                        {% endif %}
+                        </div>
+                    </div>
+                    {% for manga in mangas %}
+                        <div class="carousel-item bg-black rounded-3">
+                            <img src="mangas/images/{{ manga.image_path }}" class="d-block w-100 object-fit-contain rounded-3 carrousel__brightness--50" style="height: 30rem;">
+                            <div class="carousel-caption d-none d-md-block rounded-3">
+                            <h5>Nueva edición de {{ manga.title }}</h5>
+                            <p>{{ manga.description }}</p>
+                            {% if current_user.is_authenticated %}
+                            <a href="/" class="btn btn-secondary">Alquilar</a>
+                            {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
               </div>
         </section>
 
         <main class="container-fluid">
             <section class="container">
                 <div class="py-4 text-light">
-                    <h2>Mas populares</h2>
+                    <h2 class="mb-3">Catalogo de mangas</h2>
                     <!-- CONTENEDOR DE CARTAS -->
                     <div class="row">
                         <div class="col">
-                            <div class="row row-cols-2">
-                               <!-- CARTAS AUTOGENERADAS -->
-                                <div class="col pb-5">
-                                    <div class="card--sm border shadow rounded-3 d-flex flex-row">
-                                        <img class="rounded-start-3" src="https://a.storyblok.com/f/178900/538x760/66210542c4/spy-x-family-art-book-cover.jpg/m/filters:quality(95)format(webp)" alt="">
-                                        <div class="card__desc-sm col p-3">
-                                            <h5>Spy Family Edición 34</h5>
-                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus ad officia officiis odio eum veniam optio laboriosam quos ex dolorum, perferendis, aspernatur a atque vitae laudantium! Deleniti, vitae corrupti labore commodi iste, aspernatur ex eius ipsam voluptate nesciunt delectus consequatur! Earum atque nobis eligendi accusamus dicta, temporibus quos dolorem ea.</p>
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <h6><strong>Unidades dispobles</strong></h6>
+                            <div class="row row-cols-lg-2 row-cols-sm-1">
+                                {% for manga in mangas %}
+                                    {% if manga.status != 'Alquilado' %}
+                                    
+                                        <!-- CARTAS AUTOGENERADAS -->
+                                        <div class="col pb-5">
+                                            <div class="card--sm border border-secondary shadow rounded-3 d-flex flex-row">
+                                                <img class="rounded-start-3" src="mangas/images/{{ manga.image_path }}" alt="">
+                                                <div class="card__desc-sm col p-3">
+                                                    <h5>{{ manga.title }}</h5>
+                                                    <p>{{ manga.description }}</p>
+                                                    <div class="row">
+                                                        <div class="col-8">
+                                                            <h6><strong>Unidad {{ manga.status }}</strong></h6>
+                                                        </div>
+                                                        <!-- CONDICIONAR EL BOTON -->
+                                                        {% if current_user.is_authenticated %}
+                                                        <div class="col-4">
+                                                            <a href="/prestamos/create"><button class="btn btn-sm btn-danger">Alquilar</button></a>
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
                                                 </div>
-                                                <!-- CONDICIONAR EL BOTON -->
-                                                {% if current_user.is_authenticated %}
-                                                <div class="col-4">
-                                                    <a href="/prestamos/create"><button class="btn btn-sm btn-danger">Alquilar</button></a>
-                                                </div>
-                                                {% endif %}
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                  
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
-    </div>
+    </main>
     <footer class="py-5 text-center text-body-secondary bg-black">
         <p class="text-light">Build with 
             <a class="link-secondary" href="https://getbootstrap.com/">Bootstrap</a>

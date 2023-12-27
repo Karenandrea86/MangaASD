@@ -42,7 +42,7 @@ class MangaForm():
         validators=[
             FileRequired(message="Se requiere la imagen promocional"),
             FileAllowed(
-                ["jpg","png"],
+                ["jpg","png","jpeg"],
                 message="Solo se aceptan imagenes"
             )
         ]

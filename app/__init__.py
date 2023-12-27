@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from flask_login import LoginManager
+from flask_login import LoginManager, UserMixin
 from .config  import Config
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -31,4 +31,5 @@ from .models import Usuarios, Mangas, Prestamos
 
 @app.route('/')
 def prueba ():
-    return render_template("index.html")
+    mangas = models.Mangas.query.all()
+    return render_template("index.html", mangas = mangas)
