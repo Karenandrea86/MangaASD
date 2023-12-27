@@ -18,7 +18,7 @@ def crear():
         form.populate_obj(p)
         app.db.session.add(p)
         app.db.session.commit()
-        flash("Préstamo registrado correctamente")
+        flash("Préstamo por 15 días registrado correctamente")
         return redirect('/prestamos/listar')
     return render_template('new_prestamos.html', 
                             form = form)

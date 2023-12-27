@@ -53,7 +53,7 @@
             </header>
         </div>
     
-        <main class="container py-5" style="height: 100vh;">
+        <main class="container py-5" style="min-height: 100vh;">
             <section class="text-light row row-cols-2 g-2 g-lg-5 ">
                 <!-- MENU BOTONERIA LATERAL -->  
                 <section class="col-3">
@@ -99,8 +99,8 @@
                     <h4 class="fs-4">Formulario de registro de mangas</h4>
                     <hr>
                     <form action="" method="post" novalidate enctype="multipart/form-data" class="row g-3">
-                        <!-- {{ wtf.quick_form(form) }} -->
-                        <div class="bg-dark col-sm-6">
+                        {{ wtf.quick_form(form) }}
+                        <!--<div class="bg-dark col-sm-6">
                             {{ form.title.label }}
                             {{ form.title(class_="form-control") }}
                         </div>
@@ -122,7 +122,7 @@
                         </div>
                         <div class="col-sm-12 pt-3">
                             {{ form.submit(class_="form-control btn btn-secondary") }}
-                        </div>
+                        </div>-->
                     </form>
                 </div>
             </section>

@@ -1,7 +1,7 @@
 from app import db, login
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Tabla de Usuarios
 
@@ -35,7 +35,6 @@ class Mangas(db.Model):
     description = db.Column(db.Text)
     image_path = db.Column(db.String(100))
     rental_date = db.Column(db.DateTime, default = datetime.utcnow)
-    return_date = db.Column(db.DateTime)
     status = db.Column(db.String(20))
     price = db.Column(db.Numeric(precision = 10, scale = 2))
     
@@ -46,7 +45,7 @@ class Prestamos(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'))
     manga_id = db.Column(db.Integer, db.ForeignKey('mangas.id'))
     loan_date = db.Column(db.DateTime, default = datetime.utcnow)
-    return_date = db.Column(db.DateTime)
+    return_date = db.Column(db.DateTime, default = datetime.utcnow() + timedelta(days=15))
     
 # Tabla de Rol
 class Rol(db.Model):
