@@ -65,7 +65,7 @@
                 <div class="vr text-light"></div>
                 <section class="">
                     {% if current_user.is_authenticated %}
-                        <a href="/auth/logout" class="btn btn-secondary">Salir <i class="bi bi-box-arrow-right ms-2"></i></a>
+                        <a href="/auth/logout" class="btn btn-sm btn-secondary">Salir <i class="bi bi-box-arrow-right ms-2"></i></a>
                     {% endif %}
                 </section>
             </section>
@@ -91,7 +91,9 @@
                 <div class="carousel-indicators">
                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>   
-                  
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>   
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>   
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>   
                 </div>
                 <div class="carousel-inner rounded-3">
                     <div class="carousel-item active rounded-3">
@@ -108,11 +110,13 @@
                         <div class="carousel-item bg-black rounded-3">
                             <img src="mangas/images/{{ manga.image_path }}" class="d-block w-100 object-fit-contain rounded-3 carrousel__brightness--50" style="height: 30rem;">
                             <div class="carousel-caption d-none d-md-block rounded-3">
-                            <h5>Nueva edición de {{ manga.title }}</h5>
+                            <h3>Nueva edición de {{ manga.title }}</h3>
                             <p>{{ manga.description }}</p>
-                                {% if current_user.is_authenticated %}
-                                    <a href="/" class="btn btn-secondary">Alquilar</a>
-                                {% endif %}
+                            <p class="text-center">
+                                <span class="fw-bold">Mas informacion abajo</span>
+                                <br>
+                                <i class="fs-4 bi bi-arrow-bar-down"></i>
+                            </p>
                             </div>
                         </div>
                     {% endfor %}
@@ -131,14 +135,14 @@
         <main class="container-fluid">
             <section class="container">
                 <div class="py-4 text-light">
-                    <h2 class="mb-3">Catalogo de mangas</h2>
+                    <h2 class="mb-3">Nuevos</h2>
+                    <hr>
                     <!-- CONTENEDOR DE CARTAS -->
                     <div class="row">
                         <div class="col">
                             <div class="row row-cols-lg-2 row-cols-sm-1">
                                 {% for manga in mangas %}
                                     {% if manga.status != 'Alquilado' %}
-                                    
                                         <!-- CARTAS AUTOGENERADAS -->
                                         <div class="col pb-5">
                                             <div class="card--sm border border-secondary shadow rounded-3 d-flex flex-row">
@@ -147,15 +151,72 @@
                                                     <h5>{{ manga.title }}</h5>
                                                     <p>{{ manga.description }}</p>
                                                     <div class="row">
-                                                        <div class="col-8">
-                                                            <h6><strong>Unidad {{ manga.status }}</strong></h6>
+                                                        <div class="col-7">
+                                                            <h6><strong>Precio: ${{ manga.price }}</strong></h6>
                                                         </div>
                                                         <!-- CONDICIONAR EL BOTON -->
                                                         {% if current_user.is_authenticated %}
-                                                        <div class="col-4">
-                                                            <a href="/prestamos/create"><button class="btn btn-sm btn-danger">Alquilar</button></a>
-                                                        </div>
+                                                            <div class="col-5">
+                                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                    Ver mas
+                                                                    <i class="ms-2 bi bi-three-dots-vertical"></i>
+                                                                </button>
+                                                            </div>
                                                         {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg modal-fullscreen-lg-down">
+                                                <div class="modal-content bg-dark text-light rounded-3">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ manga.title }}</h1>
+                                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <!-- IMAGEN PROMOCIONAL -->
+                                                                <div class="col-6">
+                                                                    <img src="mangas/images/{{ manga.image_path }}" class="object-fit-lg-contain bg-black rounded-3 w-100">
+                                                                </div>
+                                                                <!-- INFORMACION DEL MANGA -->
+                                                                <div class="col-6">
+                                                                    <ul class="navbar-nav">
+                                                                        <li class="nav-item">
+                                                                            <h5 class="fw-bold">Descripcion</h5>
+                                                                            <hr class=" my-1">
+                                                                            <p class="overflow-x-auto" style="height: 10rem;">
+                                                                                {{ manga.description }}                                                                            </p>
+                                                                            <hr>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <h5 class="fw-bold">Autor</h5>
+                                                                            <p class="">
+                                                                                Mario Mendoza
+                                                                            </p>
+                                                                            <hr>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <h5 class="fw-bold">Precio</h5>
+                                                                            <p class="">
+                                                                                ${{ manga.price }}
+                                                                            </p>
+                                                                            <hr>
+                                                                        </li>
+                                                                        <div class="alert alert-info" role="alert">
+                                                                            Recuerda que tienes plazo limite de 15 dias para devolver este manga despues de alquilarlo.    
+                                                                        </div>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                    <a href="/prestamos/create" class="btn btn-danger">Alquilar</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -169,18 +230,9 @@
             </section>
         </main>
     </main>
-    <footer class="py-5 text-center text-body-secondary bg-black">
-        <p class="text-light">Build with 
-            <a class="link-secondary" href="https://getbootstrap.com/">Bootstrap</a>
-             by 
-            <a class="link-secondary" href="https://twitter.com">Andres Cordoba</a>.
-        </p>
-        <p class="mb-0">
-          <a class="link-secondary" href="#">Volver al comienzo</a>
-            <div class="vr"></div>
-          <a class="link-secondary" href="#">¿Necesitas ayuda?</a>
-        </p>
-      </footer>
+
+    {% include 'components/index/footer.html' %}
+    
     <!-- BOOTSTRAP JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
