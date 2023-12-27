@@ -4,19 +4,17 @@ from wtforms.validators import InputRequired, DataRequired
 
 class LoanForm():
     
-    user_id = SelectField("Ingrese usuario",
-                          choices= [],
+    user_id = SelectField("Usuario",
                             validators=[InputRequired(
                                 message="ID Requerido"
                             )])
-    manga_id = SelectField("Ingrese manga",
-                           choices= [],
+    manga_id = SelectField("Manga",
                             validators=[InputRequired(
                                 message="ID Requerido"
                             )])
     
 class NewLoanForm(FlaskForm, LoanForm):
-    submit = SubmitField("Guardar")
+    submit = SubmitField("Alquilar")
 
 class EditLoanForm(FlaskForm, LoanForm):
     submit = SubmitField("Actualizar")

@@ -151,8 +151,11 @@
                                                         </div>
                                                         <!-- CONDICIONAR EL BOTON -->
                                                         {% if current_user.is_authenticated %}
-                                                        <div class="col-4">
+                                                        <!--<div class="col-4">
                                                             <a href="/prestamos/create"><button class="btn btn-sm btn-danger">Alquilar</button></a>
+                                                        </div>-->
+                                                        <div class="col-4">
+                                                            <a href="/prestamos/create?manga_id={{manga_id}}"><button class="btn btn-sm btn-danger">Alquilar</button></a>
                                                         </div>
                                                         {% endif %}
                                                     </div>
