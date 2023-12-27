@@ -19,12 +19,12 @@ class MangaForm():
     status = SelectField(
         "Ingrese el estado del manga",
         choices = [
-            "Alquilado",
-            "Disponible"
+            "Disponible",
+            "Alquilado"
         ],
         validators=[
             InputRequired(message='Estado requerido')
-        ]                        
+        ]                     
     )
     price = IntegerField(
         "Ingrese el precio del manga" ,
@@ -37,6 +37,7 @@ class MangaForm():
             FileRequired(message="Se requiere la imagen promocional"),
             FileAllowed(
                 ["jpg","png","jpeg"],
+                
                 message="Solo se aceptan imagenes"
             )
         ]
