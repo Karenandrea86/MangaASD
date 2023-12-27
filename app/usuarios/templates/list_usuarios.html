@@ -115,6 +115,7 @@ get_flashed_messages() %}
                           <th scope="col">Correo</th>
                           <th scope="col">Celular</th>
                           <th scope="col">Contraseña</th>
+                          <th scope="col">Rol</th>
                           <th scope="col">Actualizar</th>
                           <th scope="col">Eliminar</th>
                         </tr>
@@ -140,6 +141,9 @@ get_flashed_messages() %}
                           </td>
                           <td>
                             {{usuario.password}}
+                          </td>
+                          <td>
+                            {{usuario.rol}}
                           </td>
                           <td>
                             <a href="/usuarios/update/{{usuario.id}}" class="btn btn-primary">

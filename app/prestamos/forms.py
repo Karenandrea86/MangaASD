@@ -14,11 +14,6 @@ class LoanForm():
                             validators=[InputRequired(
                                 message="ID Requerido"
                             )])
-    return_date = DateField("Ingrese fecha de regreso",
-                            validators=[DataRequired(
-                                message="Fecha Requerida"
-                        ),
-                            ])
     
 class NewLoanForm(FlaskForm, LoanForm):
     submit = SubmitField("Guardar")

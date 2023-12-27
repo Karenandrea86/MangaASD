@@ -16,12 +16,6 @@ class MangaForm():
             InputRequired(message="Descripción requerido")
         ]
     )
-    return_date = DateField(
-        "Ingrese la fecha de devolución" ,
-        validators=[
-            DataRequired(message='Fecha requerida')
-        ]
-    )
     status = SelectField(
         "Ingrese el estado del manga",
         choices = [
