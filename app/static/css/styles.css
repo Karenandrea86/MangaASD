@@ -21,7 +21,7 @@ filter: brightness(40%);
 .card--sm p{
  height: 7rem;
  overflow-x: hidden;
- font-size: 10px;
+ font-size: 13px;
 }
 .card--vertical--sm{
     width: 15rem;
