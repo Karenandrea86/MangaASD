@@ -19,8 +19,7 @@ class MangaForm():
     status = SelectField(
         "Ingrese el estado del manga",
         choices = [
-            "Disponible",
-            "Alquilado"
+            "Disponible"
         ],
         validators=[
             InputRequired(message='Estado requerido')

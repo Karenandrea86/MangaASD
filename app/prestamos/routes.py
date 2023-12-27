@@ -1,4 +1,5 @@
-from flask import render_template, redirect, flash
+from flask import render_template, redirect, flash, request
+from flask_login import current_user
 from app.prestamos import prestamos
 import app
 import os
@@ -11,9 +12,12 @@ def crear():
     mangas = app.models.Mangas.query.filter_by(status="Disponible")
     print(mangas)
     form.manga_id.choices = [(manga.id, str(manga.title)) for manga in mangas]
-    usuarios = app.models.Usuarios.query.all()
+    """usuarios = app.models.Usuarios.query.all()
     print(usuarios)
-    form.user_id.choices = [(usuario.id, str(usuario.username)) for usuario in usuarios]
+    form.user_id.choices = [(usuario.id, str(usuario.username)) for usuario in usuarios]"""
+    usuario = current_user
+    usuarios = app.models.Usuarios.query.filter_by(username=usuario.username).all()
+    form.user_id.choices = [(usuario.id, usuario.username) for usuario in usuarios]
     if form.validate_on_submit():
         form.populate_obj(p)
         app.db.session.add(p)
@@ -36,9 +40,12 @@ def edit(prestamo_id):
     mangas = app.models.Mangas.query.filter_by(status="Disponible")
     print(mangas)
     form.manga_id.choices = [(manga.id, str(manga.title)) for manga in mangas]
-    usuarios = app.models.Usuarios.query.all()
+    """usuarios = app.models.Usuarios.query.all()
     print(usuarios)
-    form.user_id.choices = [(usuario.id, str(usuario.username)) for usuario in usuarios]
+    form.user_id.choices = [(usuario.id, str(usuario.username)) for usuario in usuarios]"""
+    usuario = current_user
+    usuarios = app.models.Usuarios.query.filter_by(username=usuario.username).all()
+    form.user_id.choices = [(usuario.id, usuario.username) for usuario in usuarios]
     if form.validate_on_submit():
         form.populate_obj(p)
         app.db.session.commit()
