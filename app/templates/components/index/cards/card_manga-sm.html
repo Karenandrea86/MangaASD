@@ -1,0 +1,18 @@
+<div class="col pb-5">
+    <div class="card--sm border border-secondary shadow rounded-3 d-flex flex-row">
+        <img class="rounded-start-3" src="mangas/images/{{ manga.image_path }}" alt="">
+        <div class="card__desc-sm col p-3">
+            <h5>{{ manga.title }}</h5>
+            <p>{{ manga.description }}</p>
+            <div class="row">
+                <div class="col-7">
+                    <h6><strong>Precio: ${{ manga.price }}</strong></h6>
+                </div>
+                <div class="col-5">
+                    <!-- BOTON MODAL DE VER MAS -->
+                    {% include '/components/index/cards/modals/modal_vermas.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

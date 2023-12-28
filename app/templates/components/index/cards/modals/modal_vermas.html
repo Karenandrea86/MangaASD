@@ -1,0 +1,123 @@
+<!-- 
+    En este componente modal podemos observar que se encuentran dos objetos modales 
+    que se activan dependiendo la accion que haga el usuario y si esta autentificado 
+    o no.
+
+    MODAL PRINCIPAL
+        Muestra el mas informacion sobre el manga. A su vez es el 
+        contenedor del MODAL CONDICIONADO.
+
+    MODAL CONDICIONADO
+        Verifica si el usuario esta autentificado. En caso que este 
+        autentificado, lo llevara a su dashboard, en el que podra alquilar mas mangas y 
+        consultar los que estan en su poder actualmente. Sin embaro, si no esta autentificado 
+        se le mostraran 2 opciones, para se loguee o se registre en caso tal que no tenga una 
+        cuenta.
+-->
+
+
+<!-- BOTON -->
+<button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#principal">
+    Ver mas
+    <i class="ms-2 bi bi-three-dots-vertical"></i>
+</button>
+
+<!-- MODAL PRINCIPAL-->
+<div class="modal fade" id="principal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-fullscreen-lg-down">
+        <div class="modal-content bg-dark text-light rounded-3">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{ manga.title }}</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <!-- IMAGEN PROMOCIONAL -->
+                        <div class="col-6">
+                            <img src="mangas/images/{{ manga.image_path }}" class="object-fit-lg-contain bg-black rounded-3 w-100">
+                        </div>
+                        <!-- INFORMACION DEL MANGA -->
+                        <div class="col-6">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <h5 class="fw-bold">Descripcion</h5>
+                                    <hr class=" my-1">
+                                    <p class="overflow-x-auto" style="height: 10rem;">
+                                        {{ manga.description }}                                                                            </p>
+                                    <hr>
+                                </li>
+                                <li class="nav-item">
+                                    <h5 class="fw-bold">Autor</h5>
+                                    <p class="">
+                                        Mario Mendoza
+                                    </p>
+                                    <hr>
+                                </li>
+                                <li class="nav-item">
+                                    <h5 class="fw-bold">Precio</h5>
+                                    <p class="">
+                                        ${{ manga.price }}
+                                    </p>
+                                    <hr>
+                                </li>
+                                <div class="alert alert-info" role="alert">
+                                    Recuerda que tienes plazo limite de 15 dias para devolver este manga despues de alquilarlo.    
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <!-- CONDICIONAR EL BOTON -->
+            {% if current_user.is_authenticated %}
+                <a href="/prestamos/create" class="btn btn-danger">Alquilar</a>
+            {% else %}
+                <button class="btn btn-danger" data-bs-target="#condicionado" data-bs-toggle="modal">Alquilar</button>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONDICIONADO -->
+<div class="modal fade" id="condicionado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-lg-down">
+        <div class="modal-content bg-dark text-light rounded-3">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">No has iniciado sesion</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-3">
+                <div class="row my-3">
+                    <div class="col d-flex justify-content-center">
+                        <!-- CONTENIDO DEL MODAL -->
+                        <img
+                        src="{{ url_for('static', filename='img/login/login.svg') }}"
+                        style="width: 15rem;" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="fs-6 text-center">
+                        Debes primero iniciar sesion para alquilar este manga. 
+                        Pero en caso que no tengas una cuenta puedes crearla 
+                        dandole al boton registrar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <a type="button" class="btn btn-secondary" href="/">Cancelar</a>
+            <!-- CONDICIONAR EL BOTON -->
+            {% if current_user.is_authenticated %}
+                <a href="/prestamos/create" class="btn btn-danger">Alquilar</a>
+            {% else %}
+                <a href="/auth/login" class="btn btn-danger">Alquilar</a>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

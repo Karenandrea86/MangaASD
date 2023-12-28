@@ -1,0 +1,52 @@
+<header class="lh-1">
+    <div
+        class="row flex-nowrap justify-content-between align-items-center border-bottom border-secondary pb-4 py-3">
+        <div class="col align-center d-flex justify-content-center py-3">
+            <img
+                src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}"
+                style="width: 10rem;" />
+            <!-- <h1 class="text-bg-dark text-center" style="font-weight: 700;">MangaASD</h1> -->
+        </div>
+        <div class="col d-grid gap-2 d-md-flex justify-content-md-start">
+            <nav class="nav nav-underline justify-content-end">
+                <ul class="nav nav-pills flex-row justify-content-end">
+                    <li>
+                        <div class="btn-group btn-group-sm me-2">
+                            <a
+                                href="/mangas/listar"
+                                class="btn btn-outline-secondary text-start"
+                                style="min-width: 7rem;">
+                                Mangas
+                            </a>
+                            <a
+                                href="/mangas/create"
+                                class="btn btn-outline-secondary text-center">
+                                <i class="bi bi-plus-lg"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group btn-group-sm">
+                            <a
+                                href="/prestamos/listar"
+                                class="btn btn-outline-secondary text-start"
+                                style="min-width: 7rem;">
+                                Prestamos
+                            </a>
+                            <a
+                                href="/prestamos/create"
+                                class="btn btn-outline-secondary text-center">
+                                <i class="bi bi-plus-lg"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <a href="/" class="btn btn-sm btn-outline-secondary">Volver</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
