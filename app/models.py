@@ -35,8 +35,11 @@ class Mangas(db.Model):
     description = db.Column(db.Text)
     image_path = db.Column(db.String(100))
     rental_date = db.Column(db.DateTime, default = datetime.utcnow)
-    status = db.Column(db.String(20))
+    status = db.Column(db.String(20), default= 'Disponible')
     price = db.Column(db.Numeric(precision = 10, scale = 2))
+    author = db.Column(db.String(100))
+    quantity = db.Column(db.Integer)
+    category = db.Column(db.Integer, db.ForeignKey('categorias.id'))
     
 # Tabla de Préstamos
 class Prestamos(db.Model):
@@ -50,5 +53,11 @@ class Prestamos(db.Model):
 # Tabla de Rol
 class Rol(db.Model):
     __tablename__= "rol"
+    id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    name = db.Column(db.String(50))
+    
+#Tabla de Categorías
+class Categorías(db.Model):
+    __tablename__= "categorias"
     id = db.Column(db.Integer, primary_key = True, autoincrement = True)
     name = db.Column(db.String(50))
