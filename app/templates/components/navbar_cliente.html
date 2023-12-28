@@ -1,0 +1,74 @@
+<header class="lh-sm">
+    <section
+        class="p-3 hstack gap-3 flex-nowrap justify-content-between align-items-center border-bottom border-secondary">
+        <section class="d-flex justify-content-center py-3">
+            <img
+                src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}"
+                style="width: 10rem;">
+        </section>
+        <section class="d-grid gap-2 ms-auto d-md-flex justify-content-md-end">
+            {% if current_user.is_authenticated %}
+            <!-- CONTENEDOR INFO USUARIO -->
+            <div class="text-light p-0 d-grid justify-content-end"
+                style="min-width: 25rem; ">
+                <div class="row m-0 p-0">
+                    <!-- SECCION DE INFORMACION -->
+                    <div
+                        class="col-8 d-flex flex-column justify-content-end align-items-end">
+                        <!-- NOMBRE DEUSUARIO -->
+                        <p
+                            class="text-light p-1 m-0 fw-bold fs-5">{{current_user.username}}</p>
+                        <!-- ROL DE USUARIO -->
+                        {% if current_user.rol == 1 %}
+                        <p class="p-0 m-1 align-middle">Cliente</p>
+                        {% elif current_user.rol == 2 %}
+                        <p
+                            class="p-0 m-0 fw-lighter align-middle">Publicador</p>
+                        {% endif %}
+                    </div>
+                    <!-- SECCION DE FOTO -->
+                    <div
+                        class="col-4 m-0 p-0 d-flex align-items-center justify-content-center">
+                        <img
+                            src="https://www.verywellmind.com/thmb/pwEmuUJ6KO9OF8jeiQCDyKnaVQI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1187609003-73c8baf32a6a46a6b84fe931e0c51e7e.jpg"
+                            width="50" height="50"
+                            class="object-fit-cover bg-secondary-subtle"
+                            style="border-radius: 50%;"
+                            alt="Foto de perfil de usuario">
+                    </div>
+                </div>
+            </div>
+            <div class="vr text-light"></div>
+            {% else %}
+            <div class="btn-group" role="group">
+                <a href="auth/login"
+                    class="btn btn-sm btn-outline-secondary">Iniciar Sesion</a>
+                <a href="usuarios/create"
+                    class="btn btn-sm btn-outline-secondary">Registrarme</a>
+            </div>
+            {% endif %}
+        </section>
+        <section class>
+            {% if current_user.is_authenticated %}
+            <a href="/auth/logout" class="btn btn-sm btn-secondary">Salir <i
+                    class="bi bi-box-arrow-right ms-2"></i></a>
+            {% endif %}
+        </section>
+    </section>
+    <div
+        class="row flex-nowrap justify-content-center align-items-center border-bottom border-secondary">
+        <nav class="nav nav-underline justify-content-around">
+            <a class="nav-item nav-link link-light" href="#">Nuevos</a>
+            <a class="nav-item nav-link link-light" href="#">Mas populares</a>
+            <a class="nav-item nav-link link-light" href="#">Nekketsu</a>
+            <a class="nav-item nav-link link-light" href="#">Spokon</a>
+            <a class="nav-item nav-link link-light" href="#">Gekiga</a>
+            <a class="nav-item nav-link link-light" href="#">Yuri</a>
+            <a class="nav-item nav-link link-light" href="#">Yaoi</a>
+            <a class="nav-item nav-link link-light" href="#">Harem</a>
+            <a class="nav-item nav-link link-light" href="#">Mecha</a>
+            <a class="nav-item nav-link link-light" href="#">Ecchi</a>
+            <a class="nav-item nav-link link-light" href="#">Gore</a>
+        </nav>
+    </div>
+</header>
