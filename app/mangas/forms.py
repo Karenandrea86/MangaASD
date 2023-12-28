@@ -16,8 +16,17 @@ class MangaForm():
             InputRequired(message="Descripción requerido")
         ]
     )
+    image_path = FileField (label="Ingrese la imagen promocional",
+                            validators=[
+                                FileRequired(message="Se requiere la imagen promocional"),
+                                FileAllowed(
+                                    ["jpg","png","jpeg"],
+                                    message="Solo se aceptan imagenes"
+                                    )
+                                ]
+                            )
     status = SelectField(
-        "Ingrese el estado del manga",
+        "Estado del manga",
         choices = [
             "Disponible"
         ],
@@ -31,16 +40,25 @@ class MangaForm():
             InputRequired(message='Precio requerido')
         ]
     )
-    image_path = FileField (label="Ingrese la imagen promocional",
+    author = StringField(
+        "Ingrese el autor del manga" ,
         validators=[
-            FileRequired(message="Se requiere la imagen promocional"),
-            FileAllowed(
-                ["jpg","png","jpeg"],
-                
-                message="Solo se aceptan imagenes"
-            )
+            InputRequired(message='Autor requerido')
         ]
     )
+    quantity = IntegerField(
+        "Ingrese la cantidad" ,
+        validators=[
+            InputRequired(message='Cantidad requerida')
+        ]
+    )
+    category = SelectField(
+        "Ingrese la categoría del manga" ,
+        validators=[
+            InputRequired(message='Categoría requerida')
+        ]
+    )
+
 class NewMangaForm(FlaskForm, MangaForm):
     submit = SubmitField("Guardar")
     

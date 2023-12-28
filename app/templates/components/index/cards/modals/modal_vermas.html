@@ -41,16 +41,23 @@
                         <div class="col-6 d-flex flex-column">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <h5 class="fw-bold">Descripcion</h5>
-                                    <hr class=" my-1">
-                                    <p class="overflow-x-auto" style="height: 10rem;">
-                                        {{ manga.description }}                                                                            </p>
+                                    <h5 class="fw-bold">Descripción</h5>
+                                    <p class="">
+                                        {{ manga.description }}
+                                    </p>
                                     <hr>
                                 </li>
                                 <li class="nav-item">
                                     <h5 class="fw-bold">Autor</h5>
                                     <p class="">
-                                        Mario Mendoza
+                                        {{ manga.author }}
+                                    </p>
+                                    <hr>
+                                </li>
+                                <li class="nav-item">
+                                    <h5 class="fw-bold">Cantidades Disponibles</h5>
+                                    <p class="">
+                                        {{ manga.quantity }}
                                     </p>
                                     <hr>
                                 </li>

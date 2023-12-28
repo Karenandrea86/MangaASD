@@ -160,7 +160,10 @@
                     <div class="card__desc-sm row p-3">
                       <h6 class="fw-bold">{{ manga.title }}</h6>
                       <p class="descrip">{{ manga.description }}</p>
-                      <p class="col-12">{{ manga.status }}</p>
+                      <p class="col-12">
+                        <span class="fs-6 fw-bold">Cantidades Disponibles:</span>
+                        {{ manga.quantity}}
+                      </p>
                       <p class="col-9">
                         <span class="fs-6 fw-bold">Costo:</span>
                         ${{ manga.price }}
