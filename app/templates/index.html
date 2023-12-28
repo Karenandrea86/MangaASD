@@ -30,13 +30,10 @@
                 </div>
                 <div class="carousel-inner rounded-3">
                     <div class="carousel-item active rounded-3">
-                        <img src="https://www.ungeek.ph/wp-content/uploads/2022/04/spy_x_family_where_to-watch_online.jpg" class="d-block w-100 object-fit-cover rounded-3 carrousel__brightness--50" style="height: 30rem;">
+                        <img src="{{ url_for('static', filename='img/index/first_banner.svg') }}" class="d-block w-100 object-fit-cover rounded-3 carrousel__brightness--50" style="height: 30rem;">
                         <div class="carousel-caption d-none d-md-block">
-                        <h5>Nueva edición de Spy X Family</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                        {% if current_user.is_authenticated %}
-                            <a href="/" class="btn btn-secondary">Alquilar</a>
-                        {% endif %}
+                            <h5>¡Nuevas ediciones de mangas impresionantes!</h5>
+                            <p>¡Oye {{ current_user.username }}! Ven y hechale un vistazo a nuestro catalogo. Seguro te va a encantar.</p>
                         </div>
                     </div>
                     {% for manga in mangas %}
