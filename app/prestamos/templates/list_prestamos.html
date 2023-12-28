@@ -1,12 +1,16 @@
-{% import 'bootstrap/wtf.html' as wtf %} {% block content %} {% for mensaje in
-get_flashed_messages() %}
-<div class="alert alert-success">
-  <button type="button" class="close" data-dismiss="alert">
-    &times;
-  </button>
-  {{ mensaje }}
-</div>
-{% endfor %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block content %}
+{% for mensaje in get_flashed_messages() %}
+    <div class="alert alert-success">
+        <button type="button"
+            class="close"
+            data-dismiss="alert" 
+            data-timeout="10000">
+            &times;
+        </button>
+        {{ mensaje }}
+    </div>
+    {% endfor %}
 <!DOCTYPE html>
 <html lang="en">
   <head>

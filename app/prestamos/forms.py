@@ -4,10 +4,7 @@ from wtforms.validators import InputRequired, DataRequired
 
 class LoanForm():
     
-    user_id = SelectField("Usuario",
-                            validators=[InputRequired(
-                                message="ID Requerido"
-                            )])
+    user_id = SelectField("Usuario")
     manga_id = SelectField("Manga",
                             validators=[InputRequired(
                                 message="ID Requerido"
