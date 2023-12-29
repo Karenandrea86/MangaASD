@@ -1,8 +1,7 @@
-from flask import render_template, redirect, flash, request
+from flask import render_template, redirect, flash
 from flask_login import current_user
 from app.prestamos import prestamos
 import app
-import os
 from .forms import NewLoanForm, EditLoanForm
 
 @prestamos.route('/create', methods=['GET', 'POST'])
@@ -29,7 +28,10 @@ def crear():
 
 @prestamos.route('/listar')
 def listar():
-    prestamos = app.models.Prestamos.query.all()
+    if current_user.is_authenticated and current_user.rol == 2:
+        prestamos = app.models.Prestamos.query.all()
+    else:
+        prestamos = app.models.Prestamos.query.filter_by(user_id=current_user.id).all()
     return render_template("list_prestamos.html",
                             prestamos = prestamos)
 
