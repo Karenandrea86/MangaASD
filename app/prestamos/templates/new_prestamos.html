@@ -43,9 +43,9 @@
             <header class="lh-1">
                 <div class="row flex-nowrap justify-content-between align-items-center border-bottom border-secondary py-3">
                     <div class="col d-grid gap-2 d-md-flex justify-content-md-start">
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <!--<div class="btn-group" role="group" aria-label="Basic outlined example">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Ayuda</button>   
-                        </div>
+                        </div>-->
                     </div>
                     <div class="col align-center d-flex justify-content-center py-3">
                         <img
@@ -72,6 +72,7 @@
                         <hr>
                             <ul class="nav nav-pills flex-column">
                                 <li>
+                                    {% if current_user.rol == 2 %}
                                     <div class="btn-group">
                                         <a href="/usuarios/listar" class="btn btn-secondary text-start mb-3" style="min-width: 7rem;">
                                             Usuarios
@@ -80,15 +81,18 @@
                                             <i class="bi bi-plus-lg"></i>
                                         </a>
                                     </div>
+                                    {% endif %}
                                 </li>
                                 <li>
                                     <div class="btn-group">
                                         <a href="/mangas/listar" class="btn btn-secondary text-start mb-3" style="min-width: 7rem;">
                                             Mangas
                                         </a>
+                                        {% if current_user.rol == 2 %}
                                         <a href="/mangas/create" class="btn btn-secondary text-center mb-3">
                                             <i class="bi bi-plus-lg"></i>
                                         </a>
+                                        {% endif %}
                                     </div>
                                 </li>
                                 <li>
@@ -96,9 +100,9 @@
                                         <a href="/prestamos/listar" class="btn btn-secondary text-start mb-3" style="min-width: 7rem;">
                                             Prestamos
                                         </a>
-                                        <a href="/prestamos/create" class="btn btn-secondary hidden text-center mb-3">
+                                        <!--<a href="/prestamos/create" class="btn btn-secondary hidden text-center mb-3">
                                             <i class="bi bi-plus-lg"></i>
-                                        </a>
+                                        </a>-->
                                     </div>
                                 </li>
                             </ul>

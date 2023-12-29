@@ -33,11 +33,13 @@
                                 style="min-width: 7rem;">
                                 Prestamos
                             </a>
+                            {% if current_user.rol == 1 %}
                             <a
                                 href="/prestamos/create"
                                 class="btn btn-outline-secondary text-center">
                                 <i class="bi bi-plus-lg"></i>
                             </a>
+                            {% endif %}
                         </div>
                     </li>
                     <li>

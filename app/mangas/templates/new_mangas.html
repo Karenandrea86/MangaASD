@@ -43,9 +43,9 @@
             <header class="lh-1">
                 <div class="row flex-nowrap justify-content-between align-items-center border-bottom border-secondary py-3">
                     <div class="col d-grid gap-2 d-md-flex justify-content-md-start">
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <!--<div class="btn-group" role="group" aria-label="Basic outlined example">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Ayuda</button>   
-                        </div>
+                        </div>-->
                     </div>
                     <div class="col align-center d-flex justify-content-center py-3">
                         <img
@@ -96,9 +96,11 @@
                                         <a href="/prestamos/listar" class="btn btn-secondary text-start mb-3" style="min-width: 7rem;">
                                             Prestamos
                                         </a>
+                                        {% if current_user.rol == 1 %}
                                         <a href="/prestamos/create" class="btn btn-secondary text-center mb-3">
                                             <i class="bi bi-plus-lg"></i>
                                         </a>
+                                        {% endif %}
                                     </div>
                                 </li>
                             </ul>
