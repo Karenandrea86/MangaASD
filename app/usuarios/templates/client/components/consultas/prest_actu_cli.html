@@ -1,0 +1,46 @@
+<!--
+  ¿QUE HAY AQUI?
+    Lo mas importante que podemos encontrar en este componente es una tabla que muestra cuantos
+    mangas a alquilado el cliente. Despues solamente esta la seccion de bienvenida del cliente
+    para brindar algo de experiencia de usuario.
+
+  CONSEJO:
+    Es importante que se agrege este componente solamente a las vistas en las que interactuan ya
+    que no cuentan con informacion delicada o mas precisa, no son adecuadas para que las use un 
+    administrador.
+-->
+
+<!-- CONTENIDO PRICIPAL DE LA PAGINA -->
+<main class="text-light py-5" style="min-height: 100vh;">
+  
+    <!-- SECCION DE CONSULTA DE PRESTAMOS -->
+    <div class="py-3">
+      <h3>Prestamos actuales</h3>
+      <p>Hechale un vistazo a los prestamos que tienes <span class="text-info fw-bold">pendientes</span> actualmente.</p>
+      <div class="container row align-content-between p-4 border border-secondary rounded-3">
+        <table class="table table-dark table-hover">
+          <thead class="table-active">
+            <tr>
+              <th scope="col">ID Manga</th>
+              <th scope="col">Fecha Préstamo</th>
+              <th scope="col">Fecha de Regreso</th>
+            </tr>
+          </thead>
+      
+          <tbody>
+            <tr>
+              <td>
+                1
+              </td>
+              <td>
+                26/05/23
+              </td>
+              <td>
+                04/06/24
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>

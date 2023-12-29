@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manga ASD</title>
+    <!-- BOOTSTRAP CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous">
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" type="text/css" href="/app/static/css/styles.css">
+    <link rel="stylesheet" href="app/templates/styles.css">
+  </head>
+
+  <body class="bg-dark">
+    <section class="container-lg">
+      <header class="lh-sm">
+        <section
+          class="p-3 hstack gap-3 flex-nowrap justify-content-between align-items-center border-bottom border-secondary">
+          <section class="d-flex justify-content-center py-3">
+            <img
+              src="/app/static/img/MangaASD - Logo.svg"
+              style="width: 10rem;">
+          </section>
+          <!-- CONTENEDOR INFO USUARIO -->
+          <section class="text-light ms-auto p-0 d-grid justify-content-end" style="min-width: 30rem; ">
+            <div class="row m-0 p-0">
+              <!-- SECCION DE INFORMACION -->
+              <div
+                  class="col-8 d-flex flex-column justify-content-end align-items-end">
+                  <!-- NOMBRE DEUSUARIO -->
+                  <p class="text-light p-1 m-0 fw-bold fs-5">ForestParadise</p>
+                  <!-- ROL DE USUARIO -->
+                  <p class="p-0 m-0 fw-lighter align-middle">Cliente</p>
+              </div>
+              <!-- SECCION DE FOTO -->
+              <div
+                  class="col-4 m-0 p-0 d-flex align-items-center justify-content-center">
+                  <img
+                      src="https://www.verywellmind.com/thmb/pwEmuUJ6KO9OF8jeiQCDyKnaVQI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1187609003-73c8baf32a6a46a6b84fe931e0c51e7e.jpg"
+                      width="50" height="50"
+                      class="object-fit-cover bg-secondary-subtle"
+                      style="border-radius: 50%;"
+                      alt="Foto de perfil de usuario">
+              </div>
+            </div>
+          </section>
+          <section class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <div class="btn-group" role="group">
+              <a href="auth/login"
+                class="btn btn-sm btn-outline-secondary">Inicio</a>
+              <a href="usuarios/create"
+                class="btn btn-sm btn-outline-secondary">Cerrar Sesion</a>
+            </div>
+          </section>
+        </section>
+      </header>
+      <!-- CONTENIDO PRICIPAL DE LA PAGINA -->
+      <main class="text-light py-5" style="min-height: 100vh;">
+        <!-- SECCION DE BIENVENIDA -->
+        <div class="py-3">
+          <h3><span class="text-info fw-bold">¡Hey ForestParadise!</span> Bienvenido a tu perfil</h3>
+          <p class="text-secondary">Esta es una seccion diseñada para que puedas realizar la mayor 
+            cantidad de tareas lo mas rapido posible. En caso de necesitar ayuda comunicate con 
+            <a class="link-secondary" href="#">ServiTecnico@falso.com</a> y trataremos de ayudarte 
+            lo mas oportuno posible.
+          </p>
+        </div>
+        
+        <hr>
+
+        <!-- SECCION DE CONSULTA DE PRESTAMOS -->
+        <div class="py-3">
+          <h3>Prestamos actuales</h3>
+          <p>Hechale un vistazo a los prestamos que tienes <span class="text-info fw-bold">pendientes</span> actualmente.</p>
+          <div class="container row align-content-between p-4 border border-secondary rounded-3">
+            <table class="table table-dark table-hover">
+              <thead class="table-active">
+                <tr>
+                  <th scope="col">ID Manga</th>
+                  <th scope="col">Fecha Préstamo</th>
+                  <th scope="col">Fecha de Regreso</th>
+                </tr>
+              </thead>
+          
+              <tbody>
+                <tr>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    26/05/23
+                  </td>
+                  <td>
+                    04/06/24
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+      <footer class="py-5 text-center text-body-secondary bg-black">
+        <p class="text-light">Build with
+          <a class="link-secondary" href="https://getbootstrap.com/">Bootstrap</a>
+          by
+          <a class="link-secondary" href="https://twitter.com">Los front son
+            mejores que los back xdddd</a>.
+        </p>
+        <p class="mb-0">
+          <a class="link-secondary" href="#">Volver al comienzo</a>
+          <div class="vr"></div>
+          <a class="link-secondary" href="#">¿Necesitas ayuda?</a>
+        </p>
+      </footer>
+    </section>
+
+    <!-- BOOTSTRAP JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
+{% endblock %}
