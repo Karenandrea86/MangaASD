@@ -49,7 +49,11 @@
             {% endif %}
         </section>
         <section>
-            {% if current_user.rol == 2 %}
+            {% if current_user.rol == 1 %}
+            <div>
+                <a href="/prestamos/listar" class="btn btn-sm btn-secondary">Mis Préstamos</a>
+            </div>
+            {% elif current_user.rol == 2 %}
             <div>
                 <a href="/usuarios/listar" class="btn btn-sm btn-secondary">Usuarios</a>
             </div>
