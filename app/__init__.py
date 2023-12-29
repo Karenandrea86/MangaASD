@@ -42,25 +42,29 @@ def prueba ():
         form.user_id.choices = [(usuario.id, usuario.username) for usuario in usuarios]
         return render_template("index.html", mangas = mangas, form = form)
     else:
-        form = NewLoanForm()
         mangas = models.Mangas.query.filter_by(status="Disponible")
         print(mangas)
-        return render_template("index.html", mangas = mangas, form = form)
+        return render_template("index.html", mangas = mangas)
 
 @app.route("/crear", methods=['GET', 'POST'])
 def crear():
-    p = models.Prestamos()
-    form = NewLoanForm()
-    mangas = models.Mangas.query.filter_by(status="Disponible")
-    print(mangas)
-    form.manga_id.choices = [(manga.id, str(manga.title)) for manga in mangas]
-    usuario = current_user
-    usuarios = models.Usuarios.query.filter_by(username=usuario.username).all()
-    form.user_id.choices = [(usuario.id, usuario.username) for usuario in usuarios]
-    if form.validate_on_submit():
-        form.populate_obj(p)
-        db.session.add(p)
-        db.session.commit()
-        flash("Préstamo por 15 días registrado correctamente")
-        mangas = models.Mangas.query.all()
-        return redirect('/')
+    if current_user.is_authenticated:
+        p = models.Prestamos()
+        form = NewLoanForm()
+        mangas = models.Mangas.query.filter_by(status="Disponible")
+        print(mangas)
+        form.manga_id.choices = [(manga.id, str(manga.title)) for manga in mangas]
+        usuario = current_user
+        usuarios = models.Usuarios.query.filter_by(username=usuario.username).all()
+        form.user_id.choices = [(usuario.id, usuario.username) for usuario in usuarios]
+        if form.validate_on_submit():
+            form.populate_obj(p)
+            db.session.add(p)
+            db.session.commit()
+            flash("Préstamo por 15 días registrado correctamente")
+            mangas = models.Mangas.query.all()
+            return redirect('/')
+    else:
+        mangas = models.Mangas.query.filter_by(status="Disponible")
+        print(mangas)
+        return render_template("index.html", mangas = mangas)
