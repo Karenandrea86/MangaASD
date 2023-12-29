@@ -1,16 +1,26 @@
 {%  import 'bootstrap/wtf.html' as wtf %}
 {% block content %}
+
 {% for mensaje in get_flashed_messages() %}
 <div class="alert alert-success">
     <button type="button"
-        class="close"
-        data-dismiss="alert"
-        data-timeout="5000">
-        &times;
-    </button>
-    {{ mensaje }}
+    class="close"
+    data-dismiss="alert">
+    &times;
+</button>
+{{ mensaje }}
 </div>
 {% endfor %}
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var mensajes = document.querySelectorAll('.alert');
+        mensajes.forEach(function(mensaje){
+            setTimeout(function(){
+                mensaje.style.display = 'none';
+            }, 3000);
+        });
+    });
+</script>
 <!doctype html>
 <html lang="en">
   
