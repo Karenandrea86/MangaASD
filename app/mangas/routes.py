@@ -8,6 +8,9 @@ from .forms import NewMangaForm, EditMangaForm
 def crear():
     p = app.models.Mangas()
     form = NewMangaForm()
+    category = app.models.Categorías.query.all()
+    print(category)
+    form.category.choices = [(category.id, str(category.name)) for category in category]
     print(form.validate())
     if form.validate():
         print('Comenzo la validacion')
@@ -36,6 +39,9 @@ def listar():
 def editar(manga_id):
     p = app.models.Mangas.query.get(manga_id)
     form = EditMangaForm(obj = p)
+    category = app.models.Categorías.query.all()
+    print(category)
+    form.category.choices = [(category.id, str(category.name)) for category in category]
     if form.validate_on_submit():
         form.populate_obj(p)
         app.db.session.commit()
