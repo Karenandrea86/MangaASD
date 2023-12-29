@@ -3,8 +3,8 @@ from flask_login import current_user
 from app.prestamos import prestamos
 import app
 import os
-
 from .forms import NewLoanForm, EditLoanForm
+
 @prestamos.route('/create', methods=['GET', 'POST'])
 def crear():
     p = app.models.Prestamos()
