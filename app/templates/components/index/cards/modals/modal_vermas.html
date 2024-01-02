@@ -67,7 +67,7 @@
                                     </p>
                                     <hr>
                                 </li>
-                                <div class="py-3 text-warning" role="alert">
+                                <div class="py-3 text-warning">
                                     Recuerda que tienes plazo limite de 15 dias para devolver este manga despues de alquilarlo.    
                                 </div>
                             </ul>
@@ -79,7 +79,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <!-- CONDICIONAR EL BOTON -->
                 {% if current_user.is_authenticated %}
-                <form action="/prestamos/crear" method="post">
+                <form action="/prestamos/create" method="post">
                     {{ form.hidden_tag() }}
                     {{ form.user_id.label(hidden=True) }}
                     {{ form.user_id(class_="form-control", hidden=True, value=current_user.id) }}
@@ -92,6 +92,8 @@
                 {% endif %}
             </div>
         </div>
+    </div>
+</div>
 
 <!-- CONDICIONADO -->
 <div class="modal fade" id="condicionado_{{ manga.id }}" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
