@@ -1,6 +1,7 @@
 from flask import render_template, redirect, flash
 from flask_login import current_user
 from app.usuarios import usuarios
+from app.mangas import mangas
 import app
 import os
 from .forms import NewUserForm, EditUserForm
@@ -9,11 +10,11 @@ from .forms import NewUserForm, EditUserForm
 def cli_dash():
     # Prestamos
     prestamos = app.models.Prestamos.query.all()
-    
+    mangas = app.models.Mangas.query.all()
     # Usuarios
     form = EditUserForm()
     usuarios = app.models.Usuarios.query.all()
-    return render_template('client/dashboard.html', prestamos = prestamos, usuarios = usuarios, form = form)
+    return render_template('client/dashboard.html', prestamos = prestamos, usuarios = usuarios, form = form, mangas = mangas)
 
 @usuarios.route('/create', methods=['GET', 'POST'])
 def creat():
@@ -51,9 +52,9 @@ def listar():
             flash("Usuario registrado correctamente")
             return redirect('/usuarios/dashboard')
     return render_template("client/dashboard.html",
-                            usuarios = usuarios, form = form)
+                            usuarios = usuarios, form = form, mangas = mangas)
 
-@usuarios.route('/update/<usuario_id>', methods=['GET', 'POST'])
+@usuarios.route('/cli/update/<usuario_id>', methods=['GET', 'POST'])
 def edit(usuario_id):
     p = app.models.Usuarios.query.get(usuario_id)
     form = EditUserForm(obj=p)
@@ -61,7 +62,7 @@ def edit(usuario_id):
         form.populate_obj(p)
         app.db.session.commit()
         flash("Usuario actualizado")
-        return redirect('/usuarios/listar')
+        return redirect('/usuarios/dashboard')
     return render_template('client/dashboard.html', form=form)
 
 @usuarios.route('/delete/<usuario_id>')
