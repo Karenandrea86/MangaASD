@@ -67,16 +67,20 @@
                                     </p>
                                     <hr>
                                 </li>
+                                {% if current_user.rol == 1 %}
                                 <div class="py-3 text-warning">
                                     Recuerda que tienes plazo limite de 15 dias para devolver este manga despues de alquilarlo.    
                                 </div>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
+                {% if current_user.rol == 1 %}
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                {% endif %}
                 <!-- CONDICIONAR EL BOTON -->
                 {% if current_user.is_authenticated %}
                 <form action="/prestamos/create" method="post">
@@ -86,7 +90,9 @@
                     {{ form.manga_id.label(hidden=True) }}
                     <!--{{ form.manga_id(class_="form-control", value=manga.id) }}-->
                     <input type="hidden" name="manga_id" id="manga_id" value={{manga.id}} />
+                    {% if current_user.rol == 1 %}
                     <button type="submit" class="btn btn-danger">Alquilar</button>
+                    {% endif %}
                 </form>
                 {% else %}
                     <button class="btn btn-danger" data-bs-target="#condicionado_{{ manga.id }}" data-bs-toggle="modal">Alquilar</button>
