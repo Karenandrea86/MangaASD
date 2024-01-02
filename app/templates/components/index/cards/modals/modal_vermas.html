@@ -166,7 +166,9 @@
                         {{ form.manga_id.label(hidden=True) }}
                         <!--{{ form.manga_id(class_="form-control", value=manga.id) }}-->
                         <input type="hidden" name="manga_id" id="manga_id" value={{manga.id}} />
+                        {% if current_user.rol == 1 %}
                         <button type="submit" class="btn btn-danger">Alquilar</button>
+                        {% endif %}
                     </form>
                 {% endif %}
             </div>
