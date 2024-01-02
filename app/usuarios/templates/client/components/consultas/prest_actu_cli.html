@@ -11,7 +11,7 @@
 -->
 
 <!-- CONTENIDO PRICIPAL DE LA PAGINA -->
-<main class="text-light py-5" style="min-height: 100vh;">
+<main class="text-light pb-5" style="min-height: 100vh;">
   
     <!-- SECCION DE CONSULTA DE PRESTAMOS -->
     <div class="py-3">
@@ -28,17 +28,19 @@
           </thead>
       
           <tbody>
-            <tr>
-              <td>
-                1
-              </td>
-              <td>
-                26/05/23
-              </td>
-              <td>
-                04/06/24
-              </td>
-            </tr>
+            {% for prestamo in prestamos %}
+              <tr>
+                <td>
+                  {{prestamo.manga_id}}
+                </td>
+                <td>
+                  {{prestamo.loan_date}}
+                </td>
+                <td>
+                  {{prestamo.return_date}}
+                </td>
+              </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>

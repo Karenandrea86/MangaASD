@@ -8,12 +8,9 @@ from .forms import NewLoanForm, EditLoanForm
 def crear():
     p = app.models.Prestamos()
     form = NewLoanForm()
+    prestamos = app.models.Prestamos.query.all()
     mangas = app.models.Mangas.query.filter_by(status="Disponible")
-    print(mangas)
     form.manga_id.choices = [(manga.id, str(manga.title)) for manga in mangas]
-    """usuarios = app.models.Usuarios.query.all()
-    print(usuarios)
-    form.user_id.choices = [(usuario.id, str(usuario.username)) for usuario in usuarios]"""
     usuario = current_user
     usuarios = app.models.Usuarios.query.filter_by(username=usuario.username).all()
     form.user_id.choices = [(usuario.id, usuario.username) for usuario in usuarios]
@@ -24,7 +21,7 @@ def crear():
         flash("Préstamo por 15 días registrado correctamente")
         return redirect('/prestamos/listar')
     return render_template('new_prestamos.html', 
-                            form = form)
+                            form = form, prestamos = prestamos)
 
 @prestamos.route('/listar')
 def listar():

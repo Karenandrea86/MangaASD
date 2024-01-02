@@ -1,4 +1,5 @@
 function mostrarComponente(rutaComponente) {
+    console.log('ESTOY AQUIIII!!!!')
     fetch(rutaComponente)
         .then(response => response.text())
         .then(data => {

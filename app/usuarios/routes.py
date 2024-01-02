@@ -5,6 +5,16 @@ import app
 import os
 from .forms import NewUserForm, EditUserForm
 
+@usuarios.route('/cli')
+def cli_dash():
+    # Prestamos
+    prestamos = app.models.Prestamos.query.all()
+    
+    # Usuarios
+    form = EditUserForm()
+    usuarios = app.models.Usuarios.query.all()
+    return render_template('client/dashboard.html', prestamos = prestamos, usuarios = usuarios, form = form)
+
 @usuarios.route('/create', methods=['GET', 'POST'])
 def creat():
     p = app.models.Usuarios()
@@ -27,9 +37,21 @@ def creat():
 
 @usuarios.route('/listar')
 def listar():
+    p = app.models.Usuarios()
     usuarios = app.models.Usuarios.query.all()
-    return render_template("list_usuarios.html",
-                            usuarios = usuarios)
+    form = NewUserForm()
+    if form.validate_on_submit():
+        form.populate_obj(p)
+        app.db.session.add(p)
+        app.db.session.commit()
+        if current_user.is_authenticated:
+            flash("Usuario registrado correctamente")
+            return redirect('/usuarios/dashboard')
+        else:
+            flash("Usuario registrado correctamente")
+            return redirect('/usuarios/dashboard')
+    return render_template("client/dashboard.html",
+                            usuarios = usuarios, form = form)
 
 @usuarios.route('/update/<usuario_id>', methods=['GET', 'POST'])
 def edit(usuario_id):
@@ -40,7 +62,7 @@ def edit(usuario_id):
         app.db.session.commit()
         flash("Usuario actualizado")
         return redirect('/usuarios/listar')
-    return render_template('new_usuarios.html', form=form)
+    return render_template('client/dashboard.html', form=form)
 
 @usuarios.route('/delete/<usuario_id>')
 def delete(usuario_id):
