@@ -43,7 +43,6 @@ def prueba ():
         return render_template("index.html", mangas = mangas, form = form)
     else:
         mangas = models.Mangas.query.filter_by(status="Disponible")
-        print(mangas)
         return render_template("index.html", mangas = mangas)
 
 @app.route("/crear", methods=['GET', 'POST'])
@@ -52,7 +51,6 @@ def crear():
         p = models.Prestamos()
         form = NewLoanForm()
         mangas = models.Mangas.query.filter_by(status="Disponible")
-        print(mangas)
         form.manga_id.choices = [(manga.id, str(manga.title)) for manga in mangas]
         usuario = current_user
         usuarios = models.Usuarios.query.filter_by(username=usuario.username).all()

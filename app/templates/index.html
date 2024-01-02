@@ -26,7 +26,94 @@
 
   <body class="bg-dark">
     <main class="container-lg">
-        {% include '/components/navbar_cliente.html' %}
+        <header class="lh-sm">
+            <section
+                class="p-3 hstack gap-3 flex-nowrap justify-content-between align-items-center border-bottom border-secondary">
+                <section class="d-aflex justify-content-center py-3">
+                    <img
+                        src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}"
+                        style="width: 10rem;">
+                </section>
+                <section class="d-grid gap-2 ms-auto d-md-flex justify-content-md-end">
+                    {% if current_user.is_authenticated %}
+                    <!-- CONTENEDOR INFO USUARIO -->
+                    <div class="text-light p-0 d-grid justify-content-end"
+                        style="min-width: 25rem; ">
+                        <div class="row m-0 p-0">
+                            <!-- SECCION DE INFORMACION -->
+                            <div
+                                class="col-8 d-flex flex-column justify-content-end align-items-end">
+                                <!-- NOMBRE DEUSUARIO -->
+                                <p
+                                    class="text-light p-1 m-0 fw-bold fs-5">{{current_user.username}}</p>
+                                <!-- ROL DE USUARIO -->
+                                {% if current_user.rol == 1 %}
+                                <p class="p-0 m-1 align-middle">Cliente</p>
+                                {% elif current_user.rol == 2 %}
+                                <p
+                                    class="p-0 m-0 fw-lighter align-middle">Publicador</p>
+                                {% endif %}
+                            </div>
+                            {% if current_user.rol == 1 %}
+                            <!-- SECCION DE FOTO -->
+                            <div class="col-4 m-0 p-0 d-flex align-items-center justify-content-center">
+                                <a href="/usuarios/cli">
+                                    <img src="https://i.stack.imgur.com/l60Hf.png"
+                                        width="50" height="50" class="object-fit-cover bg-secondary-subtle"
+                                        style="border-radius: 50%;" alt="Foto de perfil de usuario">
+                                </a>
+                            </div>
+                            {% elif current_user.rol == 2 %}
+                                <!-- SECCION DE FOTO -->
+                                <div class="col-4 m-0 p-0 d-flex align-items-center justify-content-center">
+                                    <a href="/usuarios/admin">
+                                        <img src="https://i.stack.imgur.com/l60Hf.png"
+                                            width="50" height="50" class="object-fit-cover bg-secondary-subtle"
+                                            style="border-radius: 50%;" alt="Foto de perfil de usuario">
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="vr text-light"></div>
+                    {% else %}
+                    <div class="btn-group" role="group">
+                        <a href="auth/login"
+                            class="btn btn-sm btn-outline-secondary">Iniciar Sesion</a>
+                        <a href="usuarios/create"
+                            class="btn btn-sm btn-outline-secondary">Registrarme</a>
+                    </div>
+                    {% endif %}
+                </section>
+                <section class>
+                    {% if current_user.is_authenticated and current_user.rol == 1  %}
+                        <a href="/usuarios/cli" class="btn btn-sm btn-secondary me-2">Perfil</a>
+                        <a href="/auth/logout" class="btn btn-sm btn-secondary">Cerrar sesión <i class="bi bi-box-arrow-right ms-2"></i></a>
+                    {% elif current_user.is_authenticated and current_user.rol == 2 %}
+                    <a href="/usuarios/listar" class="btn btn-sm btn-secondary me-2">Usuarios</a>
+                        <a href="/usuarios/admin" class="btn btn-sm btn-secondary me-2">Perfil</a>
+                        <a href="/auth/logout" class="btn btn-sm btn-secondary">Cerrar sesión <i class="bi bi-box-arrow-right ms-2"></i></a>
+                    {% endif %}
+                </section>
+            </section>
+            <div
+                class="row flex-nowrap justify-content-center align-items-center border-bottom border-secondary">
+                <nav class="nav nav-underline justify-content-around">
+                    <a class="nav-item nav-link link-light" href="#">Nuevos</a>
+                    <a class="nav-item nav-link link-light" href="#">Mas populares</a>
+                    <a class="nav-item nav-link link-light" href="#">Nekketsu</a>
+                    <a class="nav-item nav-link link-light" href="#">Spokon</a>
+                    <a class="nav-item nav-link link-light" href="#">Gekiga</a>
+                    <a class="nav-item nav-link link-light" href="#">Yuri</a>
+                    <a class="nav-item nav-link link-light" href="#">Yaoi</a>
+                    <a class="nav-item nav-link link-light" href="#">Harem</a>
+                    <a class="nav-item nav-link link-light" href="#">Mecha</a>
+                    <a class="nav-item nav-link link-light" href="#">Ecchi</a>
+                    <a class="nav-item nav-link link-light" href="#">Gore</a>
+                </nav>
+            </div>
+        </header>
+        
         <section class="container-fluid py-3">
             <div id="carouselExampleCaptions" class="carousel slide">
                 <div class="carousel-indicators">
@@ -51,9 +138,11 @@
                             <h3>Nueva edición de {{ manga.title }}</h3>
                             <p>{{ manga.description }}</p>
                             <p class="text-center">
-                                <span class="fw-bold">Mas informacion abajo</span>
+                                <a class="link-light link-underline-opacity-0" href="#nuevo">
+                                    <span class="fw-bold">Mas informacion abajo</span>
                                 <br>
                                 <i class="fs-4 bi bi-arrow-bar-down"></i>
+                                </a>
                             </p>
                             </div>
                         </div>
@@ -71,7 +160,7 @@
         </section>
 
         <main class="container-fluid">
-            <section class="container">
+            <section class="container" id="nuevo">
                 <div class="py-4 text-light">
                     <h2 class="mb-3">Nuevos</h2>
                     <hr>

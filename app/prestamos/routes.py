@@ -29,9 +29,10 @@ def crear():
 
 @prestamos.route('/listar')
 def listar():
+    form = NewLoanForm()
     prestamos = app.models.Prestamos.query.all()
-    return render_template("list_prestamos.html",
-                            prestamos = prestamos)
+    return render_template("/client/dashboard.html",
+                            prestamos = prestamos, form = form)
 
 @prestamos.route('/update/<prestamo_id>', methods=['GET', 'POST'])
 def edit(prestamo_id):
