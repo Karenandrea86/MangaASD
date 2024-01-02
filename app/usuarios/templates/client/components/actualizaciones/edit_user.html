@@ -1,0 +1,53 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-sm btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#edit_user">
+    Mi información
+</button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="edit_user" tabindex="-1" aria-labelledby="edit_userLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-fullscreen-lg-down">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="edit_userLabel">Mi información</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="update/{{current_user.id}}" method="post" novalidate class="row g-3">
+                {{ form.hidden_tag() }}
+
+                {{ form.rol.label(hidden=True) }}
+                {{ form.rol(class_="form-control", hidden=True, value = current_user.rol) }}
+
+                <div class="bg-dark col-sm-4">
+                    {{ form.first_name.label }}
+                    {{ form.first_name(class_="form-control", value = current_user.first_name) }}
+                </div>
+                <div class="bg-dark col-sm-4">
+                    {{ form.last_name.label }}
+                    {{ form.last_name(class_="form-control", value = current_user.last_name) }}
+                </div>
+                <div class="bg-dark col-sm-4">
+                    {{ form.username.label }}
+                    {{ form.username(class_="form-control", value = current_user.username) }}
+                </div>
+                <div class="bg-dark col-sm-6">
+                    {{ form.email.label }}
+                    {{ form.email(class_="form-control", value = current_user.email) }}
+                </div>
+                <div class="bg-dark col-sm-6">
+                    {{ form.phone.label }}
+                    {{ form.phone(class_="form-control", value = current_user.phone) }}
+                </div>
+                <div class="col-sm-12 mb-3">
+                    {{ form.password.label(hidden = True) }}
+                    {{ form.password(class_="form-control", value = current_user.password, hidden = True) }}
+                </div>
+                <div class="col-sm-12 d-flex justify-content-end">
+                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Close</button>
+                    {{ form.submit(class_="btn btn-secondary") }}
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
