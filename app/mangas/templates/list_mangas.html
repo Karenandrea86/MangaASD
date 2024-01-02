@@ -184,8 +184,8 @@
                         ${{ manga.price }}
                       </p>
                       <tr></tr>
-                      {% if current_user.rol == 2 %}
                       <div class="col-4 float-end">
+                        {% if current_user.rol == 2 %}
                         <div class="btn-group btn-group">
                           <a
                             href="/mangas/editar/{{manga.id}}"

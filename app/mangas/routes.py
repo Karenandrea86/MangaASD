@@ -44,7 +44,10 @@ def editar(manga_id):
     form.category.choices = [(category.id, str(category.name)) for category in category]
     if form.validate_on_submit():
         form.populate_obj(p)
+        p.image_path=form.image_path.data.filename
         app.db.session.commit()
+        archivo = form.image_path.data
+        archivo.save(os.path.abspath(os.getcwd() +"/app/mangas/images/"+p.image_path))
         print('Manga actualizado')
         return redirect('/mangas/listar')
     return render_template('new_mangas.html' ,

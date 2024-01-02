@@ -15,15 +15,14 @@
         cuenta.
 -->
 
-
 <!-- BOTON -->
-<button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#principal">
+<button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#manga_{{ manga.id }}">
     Ver mas
     <i class="ms-2 bi bi-three-dots-vertical"></i>
 </button>
 
 <!-- MODAL PRINCIPAL-->
-<div class="modal fade" id="principal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+<div class="modal fade" id="manga_{{ manga.id }}" tabindex="-1" aria-labelledby="manga_{{ manga.id }}_label" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-fullscreen-lg-down">
         <div class="modal-content bg-dark text-light rounded-3">
             <div class="modal-header">
@@ -80,26 +79,22 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <!-- CONDICIONAR EL BOTON -->
                 {% if current_user.is_authenticated %}
-                    <form action="crear" method="post" novalidate>
-                        <!-- FORMULARIO OCULTO -->       
-                        {{ form.hidden_tag() }}
-                        {{ form.user_id.label(hidden=True) }}
-                        {{ form.user_id(class_="form-control", hidden=True, value=current_user.id) }}
-                        
-                        {{ form.manga_id.label(hidden=True) }}
-                        {{ form.manga_id(class_="form-control", hidden=True, value=mangas.id) }}
-                        {{ form.submit(class_="btn btn-danger") }}
-                    </form>
+                <form action="/prestamos/crear" method="post">
+                    {{ form.hidden_tag() }}
+                    {{ form.user_id.label(hidden=True) }}
+                    {{ form.user_id(class_="form-control", hidden=True, value=current_user.id) }}
+                    {{ form.manga_id.label(hidden=True) }}
+                    {{ form.manga_id(class_="form-control", hidden=True, value=manga.id) }}
+                    <button type="submit" class="btn btn-danger">Alquilar</button>
+                </form>
                 {% else %}
-                    <button class="btn btn-danger" data-bs-target="#condicionado" data-bs-toggle="modal">Alquilar</button>
+                <button class="btn btn-danger" data-bs-target="#condicionado_{{ manga.id }}" data-bs-toggle="modal">Alquilar</button>
                 {% endif %}
             </div>
         </div>
-    </div>
-</div>
 
 <!-- CONDICIONADO -->
-<div class="modal fade" id="condicionado" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+<div class="modal fade" id="condicionado_{{ manga.id }}" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
     <div class="modal-dialog modal-fullscreen-lg-down">
         <div class="modal-content bg-dark text-light rounded-3">
             <div class="modal-header">
