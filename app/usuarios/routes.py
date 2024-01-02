@@ -47,11 +47,11 @@ def listar():
         app.db.session.commit()
         if current_user.is_authenticated:
             flash("Usuario registrado correctamente")
-            return redirect('/usuarios/dashboard')
+            return redirect('list_usuarios.html')
         else:
             flash("Usuario registrado correctamente")
-            return redirect('/usuarios/dashboard')
-    return render_template("client/dashboard.html",
+            return redirect('list_usuarios.html')
+    return render_template("list_usuarios.html",
                             usuarios = usuarios, form = form, mangas = mangas)
 
 @usuarios.route('/cli/update/<usuario_id>', methods=['GET', 'POST'])
