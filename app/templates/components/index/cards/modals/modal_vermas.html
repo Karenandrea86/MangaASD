@@ -54,9 +54,10 @@
                                     <hr>
                                 </li>
                                 <li class="nav-item">
-                                    <h5 class="fw-bold">Cantidades Disponibles</h5>
+                                    <h5 class="fw-bold">Cantidades Disponibles {{ manga.id }}</h5>
                                     <p class="">
                                         {{ manga.quantity }}
+                                        
                                     </p>
                                     <hr>
                                 </li>
@@ -84,7 +85,8 @@
                     {{ form.user_id.label(hidden=True) }}
                     {{ form.user_id(class_="form-control", hidden=True, value=current_user.id) }}
                     {{ form.manga_id.label(hidden=True) }}
-                    {{ form.manga_id(class_="form-control", hidden=True, value=manga.id) }}
+                    <!--{{ form.manga_id(class_="form-control", value=manga.id) }}-->
+                    <input type="hidden" name="manga_id" id="manga_id" value={{manga.id}} />
                     <button type="submit" class="btn btn-danger">Alquilar</button>
                 </form>
                 {% else %}
