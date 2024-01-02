@@ -54,10 +54,9 @@
                                     <hr>
                                 </li>
                                 <li class="nav-item">
-                                    <h5 class="fw-bold">Cantidades Disponibles {{ manga.id }}</h5>
+                                    <h5 class="fw-bold">Cantidades Disponibles</h5>
                                     <p class="">
                                         {{ manga.quantity }}
-                                        
                                     </p>
                                     <hr>
                                 </li>
@@ -68,16 +67,20 @@
                                     </p>
                                     <hr>
                                 </li>
+                                {% if current_user.rol == 1 %}
                                 <div class="py-3 text-warning">
                                     Recuerda que tienes plazo limite de 15 dias para devolver este manga despues de alquilarlo.    
                                 </div>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
+                {% if current_user.rol == 1 %}
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                {% endif %}
                 <!-- CONDICIONAR EL BOTON -->
                 {% if current_user.is_authenticated %}
                 <button class="btn btn-danger" data-bs-target="#confirmacion" data-bs-toggle="modal">Alquilar</button>
