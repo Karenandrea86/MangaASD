@@ -52,8 +52,17 @@ get_flashed_messages() %}
     <link rel="stylesheet" href="../../static/css/styles.css" />
   </head>
   <body class="bg-dark">
+    <!-- HEADERS CONICIONADOS POR ROL -->
     <div class="container">
-      {% include '/components/navbar_admin.html' %}
+      {% if not current_user.is_authenticated or current_user.rol == 1 %}
+
+        {% include '/components/navbar_cliente.html' %}
+
+      {% elif current_user.is_authenticated and current_user.rol == 2 %}
+
+        {% include '/components/navbar_cliente.html' %}
+          
+      {% endif %}
     </div>
     <main class="container py-5" style="height: 100vh;">
       <section class="text-light row">
