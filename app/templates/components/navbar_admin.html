@@ -1,56 +1,57 @@
 <header class="lh-sm">
-    <section
-        class="p-3 hstack gap-3 flex-nowrap justify-content-between align-items-center border-bottom border-secondary">
+    <section class="p-3 hstack gap-3 flex-nowrap justify-content-between align-items-center border-bottom border-secondary">
+
+        <!-- LOGO DE MANGA ASD -->
         <section class="d-aflex justify-content-center py-3">
             <a href="/">
-                <img
-                src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}"
-                style="width: 10rem;">
+                <img src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}" style="width: 10rem;">
             </a>
         </section>
+
+        <!-- SECCION DE INFO DE USUARIO -->
         <section class="d-grid gap-2 ms-auto d-md-flex justify-content-md-end">
+
             {% if current_user.is_authenticated %}
-            <!-- CONTENEDOR INFO USUARIO -->
-            <div class="text-light p-0 d-grid justify-content-end"
-                style="min-width: 25rem; ">
-                <div class="row m-0 p-0">
-                    <!-- SECCION DE INFORMACION -->
-                    <div class="col-8 d-flex flex-column justify-content-end align-items-end">
-                        <!-- NOMBRE DEUSUARIO -->
-                        <p class="text-light p-1 m-0 fw-bold fs-5">{{current_user.username}}</p>
-                        <!-- ROL DE USUARIO -->
-                        {% if current_user.rol == 1 %}
-                            <p class="p-0 m-0 fw-lighter align-middle">Cliente</p>
-                        {% elif current_user.rol == 2%}
+
+                <!-- CONTENEDOR INFO USUARIO -->
+                <div class="text-light p-0 d-grid justify-content-end" style="min-width: 25rem; ">
+                    <div class="row m-0 p-0">
+
+                        <!-- SECCION DE INFORMACION -->
+                        <div class="col-8 d-flex flex-column justify-content-end align-items-end">
+                            <!-- NOMBRE DEUSUARIO -->
+                            <p class="text-light p-1 m-0 fw-bold fs-5">{{current_user.username}}</p>
+                            <!-- ROL DE USUARIO -->
                             <p class="p-0 m-0 fw-lighter align-middle">Publicador</p>
-                        {% endif %}
-                    </div>
-                    <!-- SECCION DE FOTO -->
-                    <div class="col-4 m-0 p-0 d-flex align-items-center justify-content-center">
-                        <a href="/usuarios/admin">
-                            <img src="https://i.stack.imgur.com/l60Hf.png"
-                                width="50" height="50" class="object-fit-cover bg-secondary-subtle"
-                                style="border-radius: 50%;" alt="Foto de perfil de usuario">
-                        </a>
+                        </div>
+                        
+                        <!-- SECCION DE FOTO -->
+                        <div class="col-4 m-0 p-0 d-flex align-items-center justify-content-center">
+                            <a href="/usuarios/admin">
+                                <img src="https://i.stack.imgur.com/l60Hf.png" width="50" height="50"
+                                    class="object-fit-cover bg-secondary-subtle" style="border-radius: 50%;"
+                                    alt="Foto de perfil de usuario">
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="vr text-light"></div>
+                <div class="vr text-light"></div>
             {% else %}
-            <div class="btn-group" role="group">
-                <a href="auth/login"
-                    class="btn btn-sm btn-outline-secondary">Iniciar Sesion</a>
-                <a href="usuarios/create"
-                    class="btn btn-sm btn-outline-secondary">Registrarme</a>
-            </div>
+                <div class="btn-group" role="group">
+                    <a href="auth/login" class="btn btn-sm btn-outline-secondary">Iniciar Sesion</a>
+                    <a href="usuarios/create" class="btn btn-sm btn-outline-secondary">Registrarme</a>
+                </div>
             {% endif %}
         </section>
+
+        <!-- BOTONERIA Y NAVEGACION -->
         <section>
             <a href="/mangas/listar" class="btn btn-sm btn-secondary me-2">Mangas</a>
             <a href="/prestamos/listar" class="btn btn-sm btn-secondary me-2">Prestamos</a>
             <a href="/usuarios/listar" class="btn btn-sm btn-secondary me-2">Usuarios</a>
             <a href="/usuarios/admin" class="btn btn-sm btn-secondary me-2">Perfil</a>
-            <a href="/auth/logout" class="btn btn-sm btn-secondary">Cerrar sesión <i class="bi bi-box-arrow-right"></i></a>
+            <a href="/auth/logout" class="btn btn-sm btn-secondary">Cerrar sesión <i
+                    class="bi bi-box-arrow-right"></i></a>
         </section>
     </section>
 </header>

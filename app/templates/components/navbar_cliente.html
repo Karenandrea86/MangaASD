@@ -1,11 +1,13 @@
 <header class="lh-sm">
-    <section
-        class="p-3 hstack gap-3 flex-nowrap justify-content-between align-items-center border-bottom border-secondary">
+    <section class="p-3 hstack gap-3 flex-nowrap justify-content-between align-items-center border-bottom border-secondary">
 
+        <!-- LOGO DE MANGA ASD -->
         <section class="d-aflex justify-content-center py-3">
-            <a href="/"><img src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}" style="width: 10rem;"></a>
+            <a href="/"><img src="{{ url_for('static', filename='img/MangaASD - Logo.svg') }}"
+                    style="width: 10rem;"></a>
         </section>
 
+        <!-- SECCION DE INFO DE USUARIO -->
         <section class="d-grid gap-2 ms-auto d-md-flex justify-content-md-end">
 
             {% if current_user.is_authenticated %}
@@ -19,33 +21,17 @@
                             <!-- NOMBRE DEUSUARIO -->
                             <p class="text-light p-1 m-0 fw-bold fs-5">{{current_user.username}}</p>
                             <!-- ROL DE USUARIO -->
-                                {% if current_user.rol == 1 %}  
                             <p class="p-0 m-1 align-middle">Cliente</p>
-                            {% elif current_user.rol == 2 %}
-                                <p class="p-0 m-0 fw-lighter align-middle">Publicador</p>
-                            {% endif %}
                         </div>
 
-                        {% if current_user.rol == 1 %}
-                            <!-- SECCION DE FOTO -->
-                            <div class="col-4 m-0 p-0 d-flex align-items-center justify-content-center">
-                                <a href="/usuarios/cli">
-                                    <img src="https://i.stack.imgur.com/l60Hf.png"
-                                        width="50" height="50" class="object-fit-cover bg-secondary-subtle"
-                                        style="border-radius: 50%;" alt="Foto de perfil de usuario">
-                                </a>
-                            </div>
-
-                        {% elif current_user.rol == 2 %}
-                            <!-- SECCION DE FOTO -->
-                            <div class="col-4 m-0 p-0 d-flex align-items-center justify-content-center">
-                                <a href="/usuarios/admin">
-                                    <img src="https://i.stack.imgur.com/l60Hf.png"
-                                        width="50" height="50" class="object-fit-cover bg-secondary-subtle"
-                                        style="border-radius: 50%;" alt="Foto de perfil de usuario">
-                                </a>
-                            </div>
-                        {% endif %}
+                        <!-- SECCION DE FOTO -->
+                        <div class="col-4 m-0 p-0 d-flex align-items-center justify-content-center">
+                            <a href="/usuarios/cli">
+                                <img src="https://i.stack.imgur.com/l60Hf.png" width="50" height="50"
+                                    class="object-fit-cover bg-secondary-subtle" style="border-radius: 50%;"
+                                    alt="Foto de perfil de usuario">
+                            </a>
+                        </div>
 
                     </div>
                 </div>
@@ -59,22 +45,14 @@
                 </div>
             {% endif %}
         </section>
-
+        
+        <!-- MODAL DE CONSULTA Y ACTUALIZACION DE INFORMACION DE PERFIL -->
         <section>
-            {% if current_user.rol == 1 %}
-            <div>
-                <a href="/prestamos/listar" class="btn btn-sm btn-secondary">Mis Préstamos</a>
-            </div>
-            {% elif current_user.rol == 2 %}
-            <div>
-                <a href="/usuarios/listar" class="btn btn-sm btn-secondary">Usuarios</a>
-            </div>
-            {% endif %}
-        </section>
-
-        <section class="">
             {% if current_user.is_authenticated %}
-                {% include 'client/components/actualizaciones/edit_user.html' %}
+
+                <!-- include 'client/components/actualizaciones/edit_user.html' esto debe ir en sus llaves respectivas -->
+                
+                <a href="/prestamos/listar" class="btn btn-sm btn-secondary me-2">Prestamos</a>
                 <a href="/" class="btn btn-sm btn-secondary me-2">Catalogo</a>
                 <a href="/auth/logout" class="btn btn-sm btn-secondary">Cerrar sesión <i class="bi bi-box-arrow-right ms-2"></i></a>
             {% endif %}

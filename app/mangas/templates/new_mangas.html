@@ -40,7 +40,16 @@
         </head>
         <body class="bg-dark">
         <div class="container">
-            {% include '/components/navbar_admin.html' %}
+            <!-- HEADERS CONICIONADOS POR ROL -->
+            {% if not current_user.is_authenticated or current_user.rol == 1 %}
+
+                {% include '/components/navbar_cliente.html' %}
+
+            {% elif current_user.is_authenticated and current_user.rol == 2 %}
+
+                {% include '/components/navbar_cliente.html' %}
+                
+            {% endif %}
         </div>
     
         <main class="container py-5" style="min-height: 100vh;">
