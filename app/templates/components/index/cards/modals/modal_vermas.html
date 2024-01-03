@@ -67,7 +67,7 @@
                                     </p>
                                     <hr>
                                 </li>
-                                {% if current_user.rol == 1 %}
+                                {% if not current_user.is_authenticated or current_user.rol == 1 %}
                                     <div class="py-3 text-warning">
                                         Recuerda que tienes plazo limite de 15 dias para devolver este manga despues de alquilarlo.    
                                     </div>
@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            {% if current_user.rol == 1 %}
+            {% if not current_user.is_authenticated or current_user.rol == 1 %}
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
