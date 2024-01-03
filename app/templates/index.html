@@ -52,50 +52,8 @@
                 </nav>
             </div>
             
-            <section class="container-fluid py-3">
-                <div id="carouselExampleCaptions" class="carousel slide">
-                    <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>   
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>   
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>   
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>   
-                    </div>
-                    <div class="carousel-inner rounded-3">
-                        <div class="carousel-item active rounded-3">
-                            <img src="{{ url_for('static', filename='img/index/first_banner.svg') }}" class="d-block w-100 object-fit-cover rounded-3 carrousel__brightness--50" style="height: 30rem;">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>¡Nuevas ediciones de mangas impresionantes!</h5>
-                                <p>¡Oye {{ current_user.username }}! Ven y hechale un vistazo a nuestro catalogo. Seguro te va a encantar.</p>
-                            </div>
-                        </div>
-                        {% for manga in mangas %}
-                            <div class="carousel-item bg-black rounded-3">
-                                <img src="mangas/images/{{ manga.image_path }}" class="d-block w-100 object-fit-contain rounded-3 carrousel__brightness--50" style="height: 30rem;">
-                                <div class="carousel-caption d-none d-md-block rounded-3">
-                                <h3>Nueva edición de {{ manga.title }}</h3>
-                                <p>{{ manga.description }}</p>
-                                <p class="text-center">
-                                    <a class="link-light link-underline-opacity-0" href="#nuevo">
-                                        <span class="fw-bold">Mas informacion abajo</span>
-                                    <br>
-                                    <i class="fs-4 bi bi-arrow-bar-down"></i>
-                                    </a>
-                                </p>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </section>
+            <!-- CARROUSEL DE MANGAS DISPONIBLES -->
+            {% include '/components/index/carrousel/carrousel.html' %}
 
             <main class="container-fluid">
                 <section class="container" id="nuevo">
