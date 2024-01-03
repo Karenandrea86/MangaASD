@@ -23,6 +23,8 @@
         {% include '/components/head.html' %}
 
     <body class="bg-dark">
+
+        <!-- CONTENIDO PRINCIPAL -->
         <main class="container-lg">
 
             <!-- HEADERS CONICIONADOS POR ROL -->
@@ -36,6 +38,7 @@
                 
             {% endif %}
 
+            <!-- NAVBAR DE CATEGORIAS DE MANGAS -->
             <div class="row flex-nowrap justify-content-center align-items-center border-bottom border-secondary">
                 <nav class="nav nav-underline justify-content-around">
                     <a class="nav-item nav-link link-light" href="#">Nuevos</a>
@@ -55,27 +58,25 @@
             <!-- CARROUSEL DE MANGAS DISPONIBLES -->
             {% include '/components/index/carrousel/carrousel.html' %}
 
-            <main class="container-fluid">
+            <section class="container-fluid">
                 <section class="container" id="nuevo">
                     <div class="py-4 text-light">
                         <h2 class="mb-3">Nuevos</h2>
                         <hr>
                         <!-- CONTENEDOR DE CARTAS -->
-                        <div class="">
-                            <div class="col">
-                                <div class="row row-cols-lg-2 row-cols-sm-1 d-flex justify-content-between align-content-between">
-                                    {% for manga in mangas %}
-                                        {% if manga.status != 'Alquilado' %}
-                                            <!-- CARTAS AUTOGENERADAS -->
-                                            {% include '/components/index/cards/card_manga-sm.html' %}
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
+                        <article class="col">
+                            <div class="row row-cols-lg-2 row-cols-sm-1 d-flex justify-content-between align-content-between">
+                                {% for manga in mangas %}
+                                    {% if manga.status != 'Alquilado' %}
+                                        <!-- CARTAS AUTOGENERADAS -->
+                                        {% include '/components/index/cards/card_manga-sm.html' %}
+                                    {% endif %}
+                                {% endfor %}
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </section>
-            </main>
+            </section>
         </main>
 
         <!-- FOOTER DE LA PAGINA WEB -->
